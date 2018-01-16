@@ -15,7 +15,7 @@ namespace CustomLayouts
 
         public PagerIndicatorTabs()
         {
-            HorizontalOptions = LayoutOptions.CenterAndExpand;
+            //HorizontalOptions = LayoutOptions.CenterAndExpand;
             VerticalOptions = LayoutOptions.Center;
             DotColor = Color.Black;
             switch (Device.RuntimePlatform)

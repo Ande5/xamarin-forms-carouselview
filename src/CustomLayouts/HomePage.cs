@@ -56,7 +56,7 @@ namespace CustomLayouts
 					);
 					break;
 				case CarouselLayout.IndicatorStyleEnum.Tabs:
-					var tabsHeight = 50;
+					var tabsHeight = 25;
 					relativeLayout.Children.Add (_tabs, 
 						Constraint.Constant (0),
 						Constraint.Constant (0),
@@ -122,12 +122,23 @@ namespace CustomLayouts
 
 		View CreateTabs()
 		{
-			var pagerIndicator = new PagerIndicatorTabs() { HorizontalOptions = LayoutOptions.CenterAndExpand };
-			pagerIndicator.RowDefinitions.Add(new RowDefinition() { Height = 50 });
+            var tabscrollView = new ScrollView();
+
+			var pagerIndicator = new PagerIndicatorTabs();
+            pagerIndicator.WidthRequest = 1000;
+
+            pagerIndicator.RowDefinitions.Add(new RowDefinition() { Height = 25 });
 			pagerIndicator.SetBinding (PagerIndicatorTabs.ItemsSourceProperty, "Pages");
 			pagerIndicator.SetBinding (PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
 
-			return pagerIndicator;
+            tabscrollView.Content = pagerIndicator;
+
+            tabscrollView.ScrollToAsync(100, 0, true);
+
+            tabscrollView.Orientation = ScrollOrientation.Horizontal;
+            tabscrollView.WidthRequest = 250;
+
+            return tabscrollView;
 		}
 	}
 
