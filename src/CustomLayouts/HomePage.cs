@@ -59,16 +59,16 @@ namespace CustomLayouts
 					var tabsHeight = 50;
 					relativeLayout.Children.Add (_tabs, 
 						Constraint.Constant (0),
-						Constraint.RelativeToParent ((parent) => { return parent.Height - tabsHeight; }),
+						Constraint.Constant (0),
 						Constraint.RelativeToParent (parent => parent.Width),
 						Constraint.Constant (tabsHeight)
 					);
 
 					relativeLayout.Children.Add (pagesCarousel,
 						Constraint.RelativeToParent ((parent) => { return parent.X; }),
-						Constraint.RelativeToParent ((parent) => { return parent.Y; }),
+						Constraint.RelativeToParent ((parent) => { return parent.Y + tabsHeight; }),
 						Constraint.RelativeToParent ((parent) => { return parent.Width; }),
-						Constraint.RelativeToView (_tabs, (parent, sibling) => { return parent.Height - (sibling.Height); })
+						Constraint.RelativeToParent ((parent) => { return parent.Height - tabsHeight; })
 					);
 					break;
 				default:
