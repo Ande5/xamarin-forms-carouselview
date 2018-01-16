@@ -9,12 +9,7 @@ namespace CustomLayouts.Controls
 {
 	public class CarouselLayout : ScrollView
 	{
-		public enum IndicatorStyleEnum
-		{
-			None,
-			Dots,
-			Tabs
-		}
+		
 
 		readonly StackLayout _stack;
 
@@ -31,8 +26,6 @@ namespace CustomLayouts.Controls
 
 			Content = _stack;
 		}
-
-		public IndicatorStyleEnum IndicatorStyle { get; set; }
 
 		public IList<View> Children {
 			get {
