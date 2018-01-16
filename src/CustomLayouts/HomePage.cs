@@ -10,8 +10,6 @@ namespace CustomLayouts
 {
 	public class HomePage : ContentPage
 	{
-		View _tabs;
-
 		RelativeLayout relativeLayout;
 
 		CarouselLayout.IndicatorStyleEnum _indicatorStyle;
@@ -20,12 +18,26 @@ namespace CustomLayouts
 
 		public HomePage(CarouselLayout.IndicatorStyleEnum indicatorStyle)
 		{
+            viewModel = new SwitcherPageViewModel();
+            BindingContext = viewModel;
+            Title = _indicatorStyle.ToString();
+
+            switch (indicatorStyle)
+            {
+                case CarouselLayout.IndicatorStyleEnum.Dots:
+                    Content = new DotTabbedView();
+                    break;
+                case CarouselLayout.IndicatorStyleEnum.Tabs:
+                    Content = new TopIndicatorTabbedView();
+                    break;
+                case CarouselLayout.IndicatorStyleEnum.None:
+                    Content = new TopIndicatorTabbedView();
+                    break;
+            }
+            /*
 			_indicatorStyle = indicatorStyle;
 
-			viewModel = new SwitcherPageViewModel();
-			BindingContext = viewModel;
-
-			Title = _indicatorStyle.ToString();
+			
 
 			relativeLayout = new RelativeLayout 
 			{
@@ -34,8 +46,11 @@ namespace CustomLayouts
 			};
 
 			var pagesCarousel = CreatePagesCarousel();
+
+            //dots
 			var dots = CreatePagerIndicatorContainer();
-			_tabs = CreateTabs();
+            //tabs
+			var tabs = CreateTabs();
 
 			switch(pagesCarousel.IndicatorStyle)
 			{
@@ -57,7 +72,7 @@ namespace CustomLayouts
 					break;
 				case CarouselLayout.IndicatorStyleEnum.Tabs:
 					var tabsHeight = 25;
-					relativeLayout.Children.Add (_tabs, 
+					relativeLayout.Children.Add (tabs, 
 						Constraint.Constant (0),
 						Constraint.Constant (0),
 						Constraint.RelativeToParent (parent => parent.Width),
@@ -82,9 +97,11 @@ namespace CustomLayouts
 			}
 
 			Content = relativeLayout;
-		}
+            */
+        }
 
-		CarouselLayout CreatePagesCarousel ()
+        //PagesCarousel
+        CarouselLayout CreatePagesCarousel ()
 		{
 			var carousel = new CarouselLayout {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -98,6 +115,7 @@ namespace CustomLayouts
 			return carousel;
 		}
 
+        //Dot
 		View CreatePagerIndicatorContainer()
 		{
 			return new StackLayout {
@@ -113,6 +131,7 @@ namespace CustomLayouts
 			return pagerIndicator;
 		}
 
+        //Tab
 		View CreateTabsContainer()
 		{
 			return new StackLayout {

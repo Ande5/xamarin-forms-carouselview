@@ -10,8 +10,8 @@ namespace CustomLayouts
 		string ImageSource { get; set; }
 	}
 
-	public class PagerIndicatorDots : StackLayout
-	{
+	public class PagerIndicatorDots : StackLayout , BaseIndicator
+    {
 		int _selectedIndex;
 
 		public Color DotColor { get; set; }

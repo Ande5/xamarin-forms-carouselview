@@ -9,18 +9,25 @@
     <Import_RootNamespace>CustomLayouts</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseTabPosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselLayout\CarouselLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomTabbedView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dots\DotIndicatorPosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DotTabbedView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Tabs\TabIndicatorPosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TopIndicatorTabbedView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HomePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SwitcherPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PagerIndicatorDots.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PagerIndicatorTabs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dots\PagerIndicatorDots.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Tabs\PagerIndicatorTabs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SwitcherPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HomeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\CarouselLayout\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

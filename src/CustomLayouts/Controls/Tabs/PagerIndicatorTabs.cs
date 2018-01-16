@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace CustomLayouts
 {
-    public class PagerIndicatorTabs : Grid
+    public class PagerIndicatorTabs : Grid , BaseIndicator
     {
         int _selectedIndex;
 
