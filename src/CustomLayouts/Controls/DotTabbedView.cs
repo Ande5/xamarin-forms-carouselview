@@ -10,9 +10,9 @@ namespace CustomLayouts.Controls
     {
         public DotTabbedView()
         {
-            Indicator = new PagerIndicatorDots() { DotSize = 5, DotColor = Color.Black };
+            Indicator = new DotIndicator() { DotSize = 5, DotColor = Color.Black };
             CasualLayout = new CarouselLayout();
-            Generator = new DotIndicatorPosition();
+            Generator = new DotIndicatorConfig();
         }
     }
 }

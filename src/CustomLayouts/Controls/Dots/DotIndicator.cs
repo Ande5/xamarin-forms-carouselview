@@ -9,7 +9,7 @@ namespace CustomLayouts
     /// <summary>
     /// dot style indicator
     /// </summary>
-	public class PagerIndicatorDots : StackLayout , BaseIndicator
+	public class DotIndicator : StackLayout , BaseIndicator
     {
 		int _selectedIndex;
 
@@ -18,7 +18,7 @@ namespace CustomLayouts
         public Color DotColor { get; set; }
 		public double DotSize { get; set; }
 
-		public PagerIndicatorDots()
+		public DotIndicator()
 		{
 			HorizontalOptions = LayoutOptions.CenterAndExpand;
 			VerticalOptions = LayoutOptions.Center;
@@ -57,16 +57,16 @@ namespace CustomLayouts
 			BindableProperty.Create(
 				nameof(ItemsSource),
 				typeof(IList),
-				typeof(PagerIndicatorDots),
+				typeof(DotIndicator),
 				null,
 				BindingMode.OneWay,
 				propertyChanging: (bindable, oldValue, newValue) =>
 				{
-					((PagerIndicatorDots)bindable).ItemsSourceChanging();
+					((DotIndicator)bindable).ItemsSourceChanging();
 				},
 				propertyChanged: (bindable, oldValue, newValue) =>
 				{
-					((PagerIndicatorDots)bindable).ItemsSourceChanged();
+					((DotIndicator)bindable).ItemsSourceChanged();
 				}
 		);
 
@@ -83,12 +83,12 @@ namespace CustomLayouts
 			BindableProperty.Create(
 				nameof(SelectedItem),
 				typeof(object),
-				typeof(PagerIndicatorDots),
+				typeof(DotIndicator),
 				null,
 				BindingMode.TwoWay,
 				propertyChanged: (bindable, oldValue, newValue) =>
 				{
-					((PagerIndicatorDots)bindable).SelectedItemChanged();
+					((DotIndicator)bindable).SelectedItemChanged();
 				}
 		);
 

@@ -38,8 +38,8 @@ namespace CustomLayouts.Controls
             }
         }
 
-        private BaseTabPosition _baseTabPosition;
-        public BaseTabPosition Generator
+        private BaseIndicatorConfig _baseTabPosition;
+        public BaseIndicatorConfig Generator
         {
             get => _baseTabPosition;
             set
@@ -65,17 +65,17 @@ namespace CustomLayouts.Controls
                     CasualLayout.SetBinding(CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
 
                     //目前先暫時這樣包裝
-                    if (Indicator is PagerIndicatorTabs bindableIndicator)
+                    if (Indicator is TabIndicator bindableIndicator)
                     {
-                        bindableIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");
-                        bindableIndicator.SetBinding(PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
+                        bindableIndicator.SetBinding(TabIndicator.ItemsSourceProperty, "Pages");
+                        bindableIndicator.SetBinding(TabIndicator.SelectedItemProperty, "CurrentPage");
                         //bindableIndicator.SetBinding(CustomLayouts.Indicator.ItemsSourceProperty, "Pages");
                         //bindableIndicator.SetBinding(CustomLayouts.Indicator.SelectedItemProperty, "CurrentPage");
                     }
-                    else if (Indicator is PagerIndicatorDots bindableDotIndicator)
+                    else if (Indicator is DotIndicator bindableDotIndicator)
                     {
-                        bindableDotIndicator.SetBinding(PagerIndicatorDots.ItemsSourceProperty, "Pages");
-                        bindableDotIndicator.SetBinding(PagerIndicatorDots.SelectedItemProperty, "CurrentPage");
+                        bindableDotIndicator.SetBinding(DotIndicator.ItemsSourceProperty, "Pages");
+                        bindableDotIndicator.SetBinding(DotIndicator.SelectedItemProperty, "CurrentPage");
                     }
 
                     //generate position

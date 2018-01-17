@@ -11,7 +11,7 @@ namespace CustomLayouts
     /// <summary>
     /// tab style indicator
     /// </summary>
-    public class PagerIndicatorTabs : ScrollView , BaseIndicator
+    public class TabIndicator : ScrollView , BaseIndicator
     {
         int _selectedIndex;
 
@@ -21,10 +21,10 @@ namespace CustomLayouts
         {
             //HorizontalOptions = LayoutOptions.CenterAndExpand;
             VerticalOptions = LayoutOptions.Center,
-            BackgroundColor = Color.Gray,
+            BackgroundColor = Color.White,
         };
 
-        public PagerIndicatorTabs()
+        public TabIndicator()
         {
             //GridContainer.WidthRequest = 500;
             GridContainer.RowDefinitions.Add(new RowDefinition() { Height = 40 });
@@ -59,7 +59,12 @@ namespace CustomLayouts
 
                 if (item is ITabProvider homeViewModel)
                 {
-                    tab.Children.Add(new Label { Text = homeViewModel.Title, FontSize = 11 });
+                    tab.Children.Add(new Label
+                    {
+                        Text = homeViewModel.Title,
+                        FontSize = 11 ,
+                        TextColor = Color.Black
+                    });
                 }
 
                 /*
@@ -90,16 +95,16 @@ namespace CustomLayouts
             BindableProperty.Create(
                 nameof(ItemsSource),
                 typeof(IList),
-                typeof(PagerIndicatorTabs),
+                typeof(TabIndicator),
                 null,
                 BindingMode.OneWay,
                 propertyChanging: (bindable, oldValue, newValue) =>
                 {
-                    ((PagerIndicatorTabs)bindable).ItemsSourceChanging();
+                    ((TabIndicator)bindable).ItemsSourceChanging();
                 },
                 propertyChanged: (bindable, oldValue, newValue) =>
                 {
-                    ((PagerIndicatorTabs)bindable).ItemsSourceChanged();
+                    ((TabIndicator)bindable).ItemsSourceChanged();
                 }
         );
 
@@ -119,12 +124,12 @@ namespace CustomLayouts
             BindableProperty.Create(
                 nameof(SelectedItem),
                 typeof(object),
-                typeof(PagerIndicatorTabs),
+                typeof(TabIndicator),
                 null,
                 BindingMode.TwoWay,
                 propertyChanged: (bindable, oldValue, newValue) =>
                 {
-                    ((PagerIndicatorTabs)bindable).SelectedItemChanged();
+                    ((TabIndicator)bindable).SelectedItemChanged();
                 }
         );
 

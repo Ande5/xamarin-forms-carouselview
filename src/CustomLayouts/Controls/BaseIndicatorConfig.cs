@@ -10,7 +10,7 @@ namespace CustomLayouts.Controls
     /// </summary>
     /// <typeparam name="T_CasualLayout"></typeparam>
     /// <typeparam name="T_Indicator"></typeparam>
-    public class BaseTabPosition
+    public class BaseIndicatorConfig
     {
         /// <summary>
         /// use this method to initial position

@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace CustomLayouts.Controls.Tabs
 {
-    class TabIndicatorPosition : BaseTabPosition
+    class TabIndicatorConfig : BaseIndicatorConfig
     {
         public override void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {

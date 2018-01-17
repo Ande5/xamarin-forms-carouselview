@@ -39,10 +39,10 @@ namespace CustomLayouts
                         tabbedView = new DotTabbedView();
                         break;
                     case IndicatorStyleEnum.Tabs:
-                        tabbedView = new TopIndicatorTabbedView();
+                        tabbedView = new TabTabbedView();
                         break;
                     case IndicatorStyleEnum.None:
-                        tabbedView = new TopIndicatorTabbedView();
+                        tabbedView = new TabTabbedView();
                         break;
                 }
 

@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace CustomLayouts.Controls.Dots
 {
-    public class DotIndicatorPosition : BaseTabPosition
+    public class DotIndicatorConfig : BaseIndicatorConfig
     {
         public override void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {

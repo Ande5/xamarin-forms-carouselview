@@ -6,13 +6,13 @@ using Xamarin.Forms;
 
 namespace CustomLayouts.Controls
 {
-    class TopIndicatorTabbedView : CustomTabbedView
+    class TabTabbedView : CustomTabbedView
     {
-        public TopIndicatorTabbedView()
+        public TabTabbedView()
         {
-            Indicator = new PagerIndicatorTabs();
+            Indicator = new TabIndicator();
             CasualLayout = new CarouselLayout();
-            Generator = new TabIndicatorPosition();
+            Generator = new TabIndicatorConfig();
         }
     }
 }
