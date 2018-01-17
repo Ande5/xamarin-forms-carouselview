@@ -1,12 +1,8 @@
 ﻿using CustomLayouts.Controls.Tabs;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
 
 namespace CustomLayouts.Controls
 {
-    class TabTabbedView : CustomTabbedView
+    internal class TabTabbedView : CustomTabbedView
     {
         public TabTabbedView()
         {

@@ -1,7 +1,4 @@
 ﻿using CustomLayouts.Controls.Dots;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace CustomLayouts.Controls
@@ -10,7 +7,7 @@ namespace CustomLayouts.Controls
     {
         public DotTabbedView()
         {
-            Indicator = new DotIndicator() { DotSize = 5, DotColor = Color.Black };
+            Indicator = new DotIndicator {DotSize = 5, DotColor = Color.Black};
             CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new DotIndicatorConfig();
         }

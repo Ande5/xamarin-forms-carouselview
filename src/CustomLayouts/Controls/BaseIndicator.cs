@@ -4,18 +4,18 @@ using Xamarin.Forms;
 namespace CustomLayouts.Controls
 {
     /// <summary>
-    /// all indicator need to inherit the interface of View
-    /// <scc cref="View"/>
+    ///     all indicator need to inherit the interface of View
+    ///     <scc cref="View" />
     /// </summary>
-    public interface BaseIndicator : IViewController, IVisualElementController, IElementController 
+    public interface BaseIndicator : IViewController, IVisualElementController, IElementController
     {
         int SelectedIndex { get; }
-
-        void CreateTabs();
 
         IList ItemsSource { get; set; }
 
         object SelectedItem { get; set; }
+
+        void CreateTabs();
 
         void ItemsSourceChanging();
 

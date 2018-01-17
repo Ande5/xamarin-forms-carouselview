@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace CustomLayouts.Controls.Dots
 {
@@ -10,11 +7,11 @@ namespace CustomLayouts.Controls.Dots
         public override void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {
             layout.Children.Add(casualLayout,
-                        Constraint.RelativeToParent((parent) => { return parent.X; }),
-                        Constraint.RelativeToParent((parent) => { return parent.Y; }),
-                        Constraint.RelativeToParent((parent) => { return parent.Width; }),
-                        Constraint.RelativeToParent((parent) => { return parent.Height / 2; })
-                    );
+                Constraint.RelativeToParent(parent => { return parent.X; }),
+                Constraint.RelativeToParent(parent => { return parent.Y; }),
+                Constraint.RelativeToParent(parent => { return parent.Width; }),
+                Constraint.RelativeToParent(parent => { return parent.Height / 2; })
+            );
 
             layout.Children.Add(indicator,
                 Constraint.Constant(0),

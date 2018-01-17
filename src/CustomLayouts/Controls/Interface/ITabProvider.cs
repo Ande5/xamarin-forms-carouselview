@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CustomLayouts.Controls.Interface
+﻿namespace CustomLayouts.Controls.Interface
 {
     public interface ITabProvider
     {
         /// <summary>
-        /// image
+        ///     image
         /// </summary>
         string ImageSource { get; set; }
 
         /// <summary>
-        /// title
+        ///     title
         /// </summary>
         string Title { get; set; }
     }

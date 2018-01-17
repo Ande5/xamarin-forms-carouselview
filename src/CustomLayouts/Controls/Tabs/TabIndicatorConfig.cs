@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace CustomLayouts.Controls.Tabs
 {
-    class TabIndicatorConfig : BaseIndicatorConfig
+    internal class TabIndicatorConfig : BaseIndicatorConfig
     {
         public override void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {
@@ -18,10 +15,10 @@ namespace CustomLayouts.Controls.Tabs
             );
 
             layout.Children.Add(casualLayout,
-                Constraint.RelativeToParent((parent) => { return parent.X; }),
-                Constraint.RelativeToParent((parent) => { return parent.Y + tabsHeight; }),
-                Constraint.RelativeToParent((parent) => { return parent.Width; }),
-                Constraint.RelativeToParent((parent) => { return parent.Height - tabsHeight; })
+                Constraint.RelativeToParent(parent => { return parent.X; }),
+                Constraint.RelativeToParent(parent => { return parent.Y + tabsHeight; }),
+                Constraint.RelativeToParent(parent => { return parent.Width; }),
+                Constraint.RelativeToParent(parent => { return parent.Height - tabsHeight; })
             );
         }
     }

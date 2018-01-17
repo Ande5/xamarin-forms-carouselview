@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using CustomLayouts.Controls.Dots;
 using CustomLayouts.Controls.Tabs;
 using Xamarin.Forms;
@@ -8,14 +6,24 @@ using Xamarin.Forms;
 namespace CustomLayouts.Controls
 {
     /// <summary>
-    /// CustomTabbedView need assigh : 
-    /// 1. CasualLayout (use to show multiple contectView)
-    /// 2. Tab (use to show tab)
-    /// 3. tab position (use to assign position)
+    ///     CustomTabbedView need assigh :
+    ///     1. CasualLayout (use to show multiple contectView)
+    ///     2. Tab (use to show tab)
+    ///     3. tab position (use to assign position)
     /// </summary>
-    public class CustomTabbedView : RelativeLayout 
+    public class CustomTabbedView : RelativeLayout
     {
+        private BaseIndicator _baseIndicator;
+
+        private BaseIndicatorConfig _baseTabPosition;
         private CarouselLayout.CarouselLayout _CarouselLayout;
+
+        public CustomTabbedView()
+        {
+            HorizontalOptions = LayoutOptions.FillAndExpand;
+            VerticalOptions = LayoutOptions.FillAndExpand;
+        }
+
         public CarouselLayout.CarouselLayout CasualLayout
         {
             get => _CarouselLayout;
@@ -26,7 +34,6 @@ namespace CustomLayouts.Controls
             }
         }
 
-        private BaseIndicator _baseIndicator;
         public BaseIndicator Indicator
         {
             get => _baseIndicator;
@@ -37,7 +44,6 @@ namespace CustomLayouts.Controls
             }
         }
 
-        private BaseIndicatorConfig _baseTabPosition;
         public BaseIndicatorConfig Generator
         {
             get => _baseTabPosition;
@@ -48,20 +54,14 @@ namespace CustomLayouts.Controls
             }
         }
 
-        public CustomTabbedView()
-        {
-            HorizontalOptions = LayoutOptions.FillAndExpand;
-            VerticalOptions = LayoutOptions.FillAndExpand;
-        }
-
-        void InitialView()
+        private void InitialView()
         {
             if (CasualLayout != null && Indicator != null && Generator != null)
-            {
                 try
                 {
                     CasualLayout.SetBinding(CarouselLayout.CarouselLayout.ItemsSourceProperty, "Pages");
-                    CasualLayout.SetBinding(CarouselLayout.CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
+                    CasualLayout.SetBinding(CarouselLayout.CarouselLayout.SelectedItemProperty, "CurrentPage",
+                        BindingMode.TwoWay);
 
                     //目前先暫時這樣包裝
                     if (Indicator is TabIndicator bindableIndicator)
@@ -82,9 +82,7 @@ namespace CustomLayouts.Controls
                 }
                 catch (Exception ex)
                 {
-
                 }
-            }
         }
     }
 }

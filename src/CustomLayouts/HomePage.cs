@@ -1,10 +1,7 @@
 ﻿using System;
-using Xamarin.Forms;
 using CustomLayouts.Controls;
 using CustomLayouts.ViewModels;
-using System.Collections;
-using System.Linq;
-using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace CustomLayouts
 {
@@ -16,15 +13,14 @@ namespace CustomLayouts
     }
 
     public class HomePage : ContentPage
-	{
-		RelativeLayout relativeLayout;
+    {
+        private IndicatorStyleEnum _indicatorStyle;
+        private RelativeLayout relativeLayout;
 
-		IndicatorStyleEnum _indicatorStyle;
+        private readonly SwitcherPageViewModel viewModel;
 
-		SwitcherPageViewModel viewModel;
-
-		public HomePage(IndicatorStyleEnum indicatorStyle)
-		{
+        public HomePage(IndicatorStyleEnum indicatorStyle)
+        {
             try
             {
                 viewModel = new SwitcherPageViewModel();
@@ -52,9 +48,7 @@ namespace CustomLayouts
             }
             catch (Exception ex)
             {
-
             }
         }
-	}
+    }
 }
-

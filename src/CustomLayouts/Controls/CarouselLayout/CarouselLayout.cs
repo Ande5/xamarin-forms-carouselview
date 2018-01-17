@@ -6,151 +6,138 @@ using Xamarin.Forms;
 
 namespace CustomLayouts.Controls.CarouselLayout
 {
-	public class CarouselLayout : ScrollView
-	{
-		readonly StackLayout _stack;
+    public class CarouselLayout : ScrollView
+    {
+        public static readonly BindableProperty SelectedIndexProperty =
+            BindableProperty.Create(
+                nameof(SelectedIndex),
+                typeof(int),
+                typeof(CarouselLayout),
+                0,
+                BindingMode.TwoWay,
+                propertyChanged: async (bindable, oldValue, newValue) =>
+                {
+                    await ((CarouselLayout) bindable).UpdateSelectedItem();
+                }
+            );
 
-		int _selectedIndex;
+        public static readonly BindableProperty ItemsSourceProperty =
+            BindableProperty.Create(
+                nameof(ItemsSource),
+                typeof(IList),
+                typeof(CarouselLayout),
+                null,
+                propertyChanging: (bindableObject, oldValue, newValue) =>
+                {
+                    ((CarouselLayout) bindableObject).ItemsSourceChanging();
+                },
+                propertyChanged: (bindableObject, oldValue, newValue) =>
+                {
+                    ((CarouselLayout) bindableObject).ItemsSourceChanged();
+                }
+            );
 
-		public CarouselLayout ()
-		{
+        public static readonly BindableProperty SelectedItemProperty =
+            BindableProperty.Create(
+                nameof(SelectedItem),
+                typeof(object),
+                typeof(CarouselLayout),
+                null,
+                BindingMode.TwoWay,
+                propertyChanged: (bindable, oldValue, newValue) =>
+                {
+                    ((CarouselLayout) bindable).UpdateSelectedIndex();
+                }
+            );
+
+        private readonly StackLayout _stack;
+
+        private bool _layingOutChildren;
+
+        private int _selectedIndex;
+
+        public CarouselLayout()
+        {
             HorizontalOptions = LayoutOptions.FillAndExpand;
             VerticalOptions = LayoutOptions.FillAndExpand;
-			Orientation = ScrollOrientation.Horizontal;
+            Orientation = ScrollOrientation.Horizontal;
 
-			_stack = new StackLayout {
-				Orientation = StackOrientation.Horizontal,
-				Spacing = 0
-			};
+            _stack = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Spacing = 0
+            };
 
-			Content = _stack;
-		}
+            Content = _stack;
+        }
 
-		public IList<View> Children {
-			get {
-				return _stack.Children;
-			}
-		}
+        public IList<View> Children => _stack.Children;
 
-		private bool _layingOutChildren;
-		protected override void LayoutChildren (double x, double y, double width, double height)
-		{
-			base.LayoutChildren (x, y, width, height);
-			if (_layingOutChildren) return;
+        public int SelectedIndex
+        {
+            get => (int) GetValue(SelectedIndexProperty);
+            set => SetValue(SelectedIndexProperty, value);
+        }
 
-			_layingOutChildren = true;
-			foreach (var child in Children) child.WidthRequest = width;
-			_layingOutChildren = false;
-		}
+        public IList ItemsSource
+        {
+            get => (IList) GetValue(ItemsSourceProperty);
+            set => SetValue(ItemsSourceProperty, value);
+        }
 
-		public static readonly BindableProperty SelectedIndexProperty =
-			BindableProperty.Create(
-				nameof(SelectedIndex), 
-				typeof(int), 
-				typeof(CarouselLayout), 
-				0, 
-				BindingMode.TwoWay,
-				propertyChanged: async (bindable, oldValue, newValue) =>
-				{
-					await ((CarouselLayout)bindable).UpdateSelectedItem();
-				}
-			);
+        public DataTemplate ItemTemplate { get; set; }
 
-		public int SelectedIndex {
-			get {
-				return (int)GetValue (SelectedIndexProperty);
-			}
-			set {
-				SetValue (SelectedIndexProperty, value);
-			}
-		}
+        public object SelectedItem
+        {
+            get => GetValue(SelectedItemProperty);
+            set => SetValue(SelectedItemProperty, value);
+        }
 
-		async Task UpdateSelectedItem ()
-		{
-			await Task.Delay(300);
-			SelectedItem = SelectedIndex > -1 ? Children[SelectedIndex].BindingContext : null;
-		}
+        protected override void LayoutChildren(double x, double y, double width, double height)
+        {
+            base.LayoutChildren(x, y, width, height);
+            if (_layingOutChildren) return;
 
-		public static readonly BindableProperty ItemsSourceProperty =
-			BindableProperty.Create(
-				nameof(ItemsSource),
-				typeof(IList),
-				typeof(CarouselLayout),
-				null,
-				propertyChanging: (bindableObject, oldValue, newValue) =>
-				{
-					((CarouselLayout)bindableObject).ItemsSourceChanging();
-				},
-				propertyChanged: (bindableObject, oldValue, newValue) =>
-				{
-					((CarouselLayout)bindableObject).ItemsSourceChanged();
-				}
-			);
+            _layingOutChildren = true;
+            foreach (var child in Children) child.WidthRequest = width;
+            _layingOutChildren = false;
+        }
 
-		public IList ItemsSource {
-			get {
-				return (IList)GetValue (ItemsSourceProperty);
-			}
-			set {
-				SetValue (ItemsSourceProperty, value);
-			}
-		}
+        private async Task UpdateSelectedItem()
+        {
+            await Task.Delay(300);
+            SelectedItem = SelectedIndex > -1 ? Children[SelectedIndex].BindingContext : null;
+        }
 
-		void ItemsSourceChanging ()
-		{
-			if (ItemsSource == null) return;
-			_selectedIndex = ItemsSource.IndexOf (SelectedItem);
-		}
+        private void ItemsSourceChanging()
+        {
+            if (ItemsSource == null) return;
+            _selectedIndex = ItemsSource.IndexOf(SelectedItem);
+        }
 
-		void ItemsSourceChanged ()
-		{
-			_stack.Children.Clear ();
-			foreach (var item in ItemsSource) {
-				var view = (View)ItemTemplate.CreateContent ();
-				var bindableObject = view as BindableObject;
-				if (bindableObject != null)
-					bindableObject.BindingContext = item;
-				_stack.Children.Add (view);
-			}
+        private void ItemsSourceChanged()
+        {
+            _stack.Children.Clear();
+            foreach (var item in ItemsSource)
+            {
+                var view = (View) ItemTemplate.CreateContent();
+                var bindableObject = view as BindableObject;
+                if (bindableObject != null)
+                    bindableObject.BindingContext = item;
+                _stack.Children.Add(view);
+            }
 
-			if (_selectedIndex >= 0) SelectedIndex = _selectedIndex;
-		}
+            if (_selectedIndex >= 0) SelectedIndex = _selectedIndex;
+        }
 
-		public DataTemplate ItemTemplate {
-			get;
-			set;
-		}
+        private void UpdateSelectedIndex()
+        {
+            if (SelectedItem == BindingContext) return;
 
-		public static readonly BindableProperty SelectedItemProperty =
-			BindableProperty.Create(
-				nameof(SelectedItem),
-				typeof(object),
-				typeof(CarouselLayout),
-				null,
-				BindingMode.TwoWay,
-				propertyChanged: (bindable, oldValue, newValue) =>
-				{
-					((CarouselLayout)bindable).UpdateSelectedIndex();
-				}
-			);
-
-		public object SelectedItem {
-			get {
-				return GetValue (SelectedItemProperty);
-			}
-			set {
-				SetValue (SelectedItemProperty, value);
-			}
-		}
-
-		void UpdateSelectedIndex ()
-		{
-			if (SelectedItem == BindingContext) return;
-
-			SelectedIndex = Children
-				.Select (c => c.BindingContext)
-				.ToList ()
-				.IndexOf (SelectedItem);
-		}
-	}
+            SelectedIndex = Children
+                .Select(c => c.BindingContext)
+                .ToList()
+                .IndexOf(SelectedItem);
+        }
+    }
 }
