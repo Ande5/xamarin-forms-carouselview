@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomLayouts.Controls.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
@@ -24,7 +25,8 @@ namespace CustomLayouts.ViewModels
 		}
 
 		IEnumerable<HomeViewModel> _pages;
-		public IEnumerable<HomeViewModel> Pages {
+		public IEnumerable<HomeViewModel> Pages
+        {
 			get {
 				return _pages;
 			}

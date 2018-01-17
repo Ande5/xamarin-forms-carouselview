@@ -4,12 +4,18 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using CustomLayouts.ViewModels;
+using CustomLayouts.Controls.Interface;
 
 namespace CustomLayouts
 {
+    /// <summary>
+    /// tab style indicator
+    /// </summary>
     public class PagerIndicatorTabs : ScrollView , BaseIndicator
     {
         int _selectedIndex;
+
+        public int SelectedIndex => _selectedIndex;
 
         public Grid GridContainer { get; set; } = new Grid()
         {
@@ -34,7 +40,7 @@ namespace CustomLayouts
 
         }
 
-        void CreateTabs()
+        public void CreateTabs()
         {
 
             if (GridContainer.Children != null && GridContainer.Children.Count > 0) GridContainer.Children.Clear();
@@ -52,7 +58,7 @@ namespace CustomLayouts
                     WidthRequest = 70,
                 };
 
-                if (item is HomeViewModel homeViewModel)
+                if (item is ITabProvider homeViewModel)
                 {
                     tab.Children.Add(new Label { Text = homeViewModel.Title, FontSize = 11 });
                 }
@@ -135,13 +141,13 @@ namespace CustomLayouts
             }
         }
 
-        void ItemsSourceChanging()
+        public void ItemsSourceChanging()
         {
             if (ItemsSource != null)
                 _selectedIndex = ItemsSource.IndexOf(SelectedItem);
         }
 
-        void ItemsSourceChanged()
+        public void ItemsSourceChanged()
         {
             if (ItemsSource == null) return;
 
@@ -154,7 +160,7 @@ namespace CustomLayouts
             CreateTabs();
         }
 
-        async void SelectedItemChanged()
+        public async void SelectedItemChanged()
         {
 
             var selectedIndex = ItemsSource.IndexOf(SelectedItem);

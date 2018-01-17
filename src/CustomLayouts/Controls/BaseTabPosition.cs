@@ -43,7 +43,7 @@ namespace CustomLayouts.Controls
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                ItemTemplate = new DataTemplate(typeof(HomeView))
+                ItemTemplate = new DataTemplate(typeof(HomeView)),
             };
             carousel.SetBinding(CarouselLayout.ItemsSourceProperty, "Pages");
             carousel.SetBinding(CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);

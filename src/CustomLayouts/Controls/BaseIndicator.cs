@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -11,6 +12,18 @@ namespace CustomLayouts
     /// </summary>
     public interface BaseIndicator : IViewController, IVisualElementController, IElementController
     {
+        int SelectedIndex { get; }
 
+        void CreateTabs();
+
+        IList ItemsSource { get; set; }
+
+        object SelectedItem { get; set; }
+
+        void ItemsSourceChanging();
+
+        void ItemsSourceChanged();
+
+        void SelectedItemChanged();
     }
 }

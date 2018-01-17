@@ -2,19 +2,20 @@
 using Xamarin.Forms;
 using System.Collections;
 using System.Linq;
+using CustomLayouts.Controls.Interface;
 
 namespace CustomLayouts
 {
-	public interface ITabProvider
-	{
-		string ImageSource { get; set; }
-	}
-
+    /// <summary>
+    /// dot style indicator
+    /// </summary>
 	public class PagerIndicatorDots : StackLayout , BaseIndicator
     {
 		int _selectedIndex;
 
-		public Color DotColor { get; set; }
+        public int SelectedIndex => _selectedIndex;
+
+        public Color DotColor { get; set; }
 		public double DotSize { get; set; }
 
 		public PagerIndicatorDots()
@@ -37,7 +38,7 @@ namespace CustomLayouts
 			Children.Add(dot);
 		}
 
-		void CreateTabs()
+		public void CreateTabs()
 		{
 			foreach(var item in ItemsSource)
 			{
@@ -100,13 +101,13 @@ namespace CustomLayouts
 			}
 		}
 
-		void ItemsSourceChanging ()
+        public void ItemsSourceChanging ()
 		{
 			if (ItemsSource != null)
 				_selectedIndex = ItemsSource.IndexOf (SelectedItem);
 		}
 
-		void ItemsSourceChanged ()
+        public void ItemsSourceChanged ()
 		{
 			if (ItemsSource == null) return;
 
@@ -129,7 +130,7 @@ namespace CustomLayouts
 			//*******************************************
 		}
 
-		void SelectedItemChanged () {
+        public void SelectedItemChanged () {
 
 			var selectedIndex = ItemsSource.IndexOf (SelectedItem);
 			var pagerIndicators = Children.Cast<Button> ().ToList ();
