@@ -30,7 +30,7 @@ namespace CustomLayouts.Controls.Tabs
             var tabscrollView = new ScrollView();
 
             var pagerIndicator = new PagerIndicatorTabs();
-            pagerIndicator.WidthRequest = 1000;
+            pagerIndicator.WidthRequest = 500;
 
             pagerIndicator.RowDefinitions.Add(new RowDefinition() { Height = 25 });
             pagerIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");

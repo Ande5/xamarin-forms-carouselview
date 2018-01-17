@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using CustomLayouts.ViewModels;
 
 namespace CustomLayouts
 {
@@ -46,6 +47,13 @@ namespace CustomLayouts
                     VerticalOptions = LayoutOptions.Center,
                     Padding = new Thickness(7),
                 };
+
+                if (item is HomeViewModel homeViewModel)
+                {
+                    tab.Children.Add(new Label { Text = homeViewModel.Title + (index + 1), FontSize = 11 });
+                }
+
+                /*
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
@@ -57,6 +65,7 @@ namespace CustomLayouts
                         tab.Children.Add(new Image { Source = "pin.png", HeightRequest = 25 });
                         break;
                 }
+                */
 
                 var tgr = new TapGestureRecognizer();
                 tgr.Command = new Command(() =>
