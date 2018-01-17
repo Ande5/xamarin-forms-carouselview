@@ -27,23 +27,10 @@ namespace CustomLayouts.Controls.Tabs
 
         public override View CreateIndicator()
         {
-            var tabscrollView = new ScrollView();
-
             var pagerIndicator = new PagerIndicatorTabs();
-            pagerIndicator.WidthRequest = 500;
-
-            pagerIndicator.RowDefinitions.Add(new RowDefinition() { Height = 25 });
             pagerIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");
             pagerIndicator.SetBinding(PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
-
-            tabscrollView.Content = pagerIndicator;
-
-            tabscrollView.ScrollToAsync(100, 0, true);
-
-            tabscrollView.Orientation = ScrollOrientation.Horizontal;
-            tabscrollView.WidthRequest = 250;
-
-            return tabscrollView;
+            return pagerIndicator;
         }
     }
 }

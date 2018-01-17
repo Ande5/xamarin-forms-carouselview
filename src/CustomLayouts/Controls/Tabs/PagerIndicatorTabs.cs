@@ -7,39 +7,43 @@ using CustomLayouts.ViewModels;
 
 namespace CustomLayouts
 {
-    public class PagerIndicatorTabs : Grid , BaseIndicator
+    public class PagerIndicatorTabs : ScrollView , BaseIndicator
     {
         int _selectedIndex;
 
-        public Color DotColor { get; set; }
-        public double DotSize { get; set; }
+        public Grid GridContainer { get; set; } = new Grid()
+        {
+            //HorizontalOptions = LayoutOptions.CenterAndExpand;
+            VerticalOptions = LayoutOptions.Center,
+            BackgroundColor = Color.Gray,
+        };
 
         public PagerIndicatorTabs()
         {
-            //HorizontalOptions = LayoutOptions.CenterAndExpand;
-            VerticalOptions = LayoutOptions.Center;
-            DotColor = Color.Black;
-            switch (Device.RuntimePlatform)
-            {
-                case Device.iOS:
-                    BackgroundColor = Color.Gray;
-                    break;
-            }
+            GridContainer.WidthRequest = 500;
+            GridContainer.RowDefinitions.Add(new RowDefinition() { Height = 35 });
+            this.Content = GridContainer;
+            this.ScrollToAsync(100, 0, true);
+            this.Orientation = ScrollOrientation.Horizontal;
 
+
+            /*
             var assembly = typeof(PagerIndicatorTabs).GetTypeInfo().Assembly;
             foreach (var res in assembly.GetManifestResourceNames())
                 System.Diagnostics.Debug.WriteLine("found resource: " + res);
+            */
+
         }
 
         void CreateTabs()
         {
 
-            if (Children != null && Children.Count > 0) Children.Clear();
+            if (GridContainer.Children != null && GridContainer.Children.Count > 0) GridContainer.Children.Clear();
 
             foreach (var item in ItemsSource)
             {
 
-                var index = Children.Count;
+                var index = GridContainer.Children.Count;
                 var tab = new StackLayout
                 {
                     Orientation = StackOrientation.Vertical,
@@ -73,7 +77,7 @@ namespace CustomLayouts
                     SelectedItem = ItemsSource[index];
                 });
                 tab.GestureRecognizers.Add(tgr);
-                Children.Add(tab, index, 0);
+                GridContainer.Children.Add(tab, index, 0);
             }
         }
 
@@ -141,10 +145,10 @@ namespace CustomLayouts
         {
             if (ItemsSource == null) return;
 
-            this.ColumnDefinitions.Clear();
+            this.GridContainer.ColumnDefinitions.Clear();
             foreach (var item in ItemsSource)
             {
-                this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                this.GridContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             }
 
             CreateTabs();
@@ -154,7 +158,7 @@ namespace CustomLayouts
         {
 
             var selectedIndex = ItemsSource.IndexOf(SelectedItem);
-            var pagerIndicators = Children.Cast<StackLayout>().ToList();
+            var pagerIndicators = GridContainer.Children.Cast<StackLayout>().ToList();
 
             foreach (var pi in pagerIndicators)
             {
