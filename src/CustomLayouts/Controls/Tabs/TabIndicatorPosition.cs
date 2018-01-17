@@ -9,7 +9,7 @@ namespace CustomLayouts.Controls.Tabs
     {
         public override void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {
-            var tabsHeight = 25;
+            var tabsHeight = 40;
             layout.Children.Add(indicator,
                 Constraint.Constant(0),
                 Constraint.Constant(0),

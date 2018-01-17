@@ -14,7 +14,11 @@ namespace CustomLayouts.ViewModels
 				new HomeViewModel { Title = "2", Background = Color.Red, ImageSource = "icon.png" },
 				new HomeViewModel { Title = "3", Background = Color.Blue, ImageSource = "icon.png" },
 				new HomeViewModel { Title = "4", Background = Color.Yellow, ImageSource = "icon.png" },
-			};
+                new HomeViewModel { Title = "5", Background = Color.White, ImageSource = "icon.png" },
+                new HomeViewModel { Title = "6", Background = Color.Red, ImageSource = "icon.png" },
+                new HomeViewModel { Title = "7", Background = Color.Blue, ImageSource = "icon.png" },
+                new HomeViewModel { Title = "8", Background = Color.Yellow, ImageSource = "icon.png" },
+            };
 
 			CurrentPage = Pages.First();
 		}

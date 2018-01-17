@@ -20,10 +20,9 @@ namespace CustomLayouts
 
         public PagerIndicatorTabs()
         {
-            GridContainer.WidthRequest = 500;
-            GridContainer.RowDefinitions.Add(new RowDefinition() { Height = 35 });
+            //GridContainer.WidthRequest = 500;
+            GridContainer.RowDefinitions.Add(new RowDefinition() { Height = 40 });
             this.Content = GridContainer;
-            this.ScrollToAsync(100, 0, true);
             this.Orientation = ScrollOrientation.Horizontal;
 
 
@@ -50,11 +49,12 @@ namespace CustomLayouts
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                     Padding = new Thickness(7),
+                    WidthRequest = 70,
                 };
 
                 if (item is HomeViewModel homeViewModel)
                 {
-                    tab.Children.Add(new Label { Text = homeViewModel.Title + (index + 1), FontSize = 11 });
+                    tab.Children.Add(new Label { Text = homeViewModel.Title, FontSize = 11 });
                 }
 
                 /*
@@ -154,7 +154,7 @@ namespace CustomLayouts
             CreateTabs();
         }
 
-        void SelectedItemChanged()
+        async void SelectedItemChanged()
         {
 
             var selectedIndex = ItemsSource.IndexOf(SelectedItem);
@@ -168,6 +168,19 @@ namespace CustomLayouts
             if (selectedIndex > -1)
             {
                 SelectTab(pagerIndicators[selectedIndex]);
+            }
+
+            //取得所有欄位的寬度
+            var listWidth = pagerIndicators.Select(x => x.Width);
+
+            //目前要移動的位置
+            var targetPoition = listWidth.Take(selectedIndex==0 ? 0 : selectedIndex - 1).Sum();
+
+            //如果在可以捲動的範圍
+            if (targetPoition < GridContainer.Width - this.Width)
+            {
+                //移動物件
+                await ScrollToAsync(targetPoition, 0, true);
             }
         }
 
