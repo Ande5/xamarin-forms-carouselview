@@ -1,10 +1,10 @@
 ﻿using System;
-using Xamarin.Forms;
 using System.Collections;
 using System.Linq;
 using CustomLayouts.Controls.Interface;
+using Xamarin.Forms;
 
-namespace CustomLayouts
+namespace CustomLayouts.Controls.Dots
 {
     /// <summary>
     /// dot style indicator

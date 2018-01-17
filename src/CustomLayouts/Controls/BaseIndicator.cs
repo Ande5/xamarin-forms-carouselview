@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections;
 using Xamarin.Forms;
 
-namespace CustomLayouts
+namespace CustomLayouts.Controls
 {
     /// <summary>
     /// all indicator need to inherit the interface of View

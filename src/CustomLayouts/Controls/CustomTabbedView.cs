@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CustomLayouts.Controls.Dots;
+using CustomLayouts.Controls.Tabs;
 using Xamarin.Forms;
 
 namespace CustomLayouts.Controls
@@ -11,13 +13,10 @@ namespace CustomLayouts.Controls
     /// 2. Tab (use to show tab)
     /// 3. tab position (use to assign position)
     /// </summary>
-    /// <typeparam name="T_CasualLayout"></typeparam>
-    /// <typeparam name="T_Indicator"></typeparam>
-    /// <typeparam name="T_Position"></typeparam>
     public class CustomTabbedView : RelativeLayout 
     {
-        private CarouselLayout _CarouselLayout;
-        public CarouselLayout CasualLayout
+        private CarouselLayout.CarouselLayout _CarouselLayout;
+        public CarouselLayout.CarouselLayout CasualLayout
         {
             get => _CarouselLayout;
             set
@@ -61,8 +60,8 @@ namespace CustomLayouts.Controls
             {
                 try
                 {
-                    CasualLayout.SetBinding(CarouselLayout.ItemsSourceProperty, "Pages");
-                    CasualLayout.SetBinding(CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
+                    CasualLayout.SetBinding(CarouselLayout.CarouselLayout.ItemsSourceProperty, "Pages");
+                    CasualLayout.SetBinding(CarouselLayout.CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
 
                     //目前先暫時這樣包裝
                     if (Indicator is TabIndicator bindableIndicator)

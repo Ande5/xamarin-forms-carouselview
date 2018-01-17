@@ -11,7 +11,7 @@ namespace CustomLayouts.Controls
         public DotTabbedView()
         {
             Indicator = new DotIndicator() { DotSize = 5, DotColor = Color.Black };
-            CasualLayout = new CarouselLayout();
+            CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new DotIndicatorConfig();
         }
     }

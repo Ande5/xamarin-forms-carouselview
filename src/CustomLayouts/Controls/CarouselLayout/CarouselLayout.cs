@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Xamarin.Forms;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
-namespace CustomLayouts.Controls
+namespace CustomLayouts.Controls.CarouselLayout
 {
 	public class CarouselLayout : ScrollView
 	{

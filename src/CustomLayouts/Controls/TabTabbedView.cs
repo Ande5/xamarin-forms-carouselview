@@ -11,7 +11,7 @@ namespace CustomLayouts.Controls
         public TabTabbedView()
         {
             Indicator = new TabIndicator();
-            CasualLayout = new CarouselLayout();
+            CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new TabIndicatorConfig();
         }
     }

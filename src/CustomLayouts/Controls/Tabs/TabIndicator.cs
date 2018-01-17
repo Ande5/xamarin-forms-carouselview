@@ -1,12 +1,9 @@
-﻿using System;
-using Xamarin.Forms;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
-using System.Reflection;
-using CustomLayouts.ViewModels;
 using CustomLayouts.Controls.Interface;
+using Xamarin.Forms;
 
-namespace CustomLayouts
+namespace CustomLayouts.Controls.Tabs
 {
     /// <summary>
     /// tab style indicator

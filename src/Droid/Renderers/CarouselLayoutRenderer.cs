@@ -8,6 +8,7 @@ using Android.Views;
 using System.ComponentModel;
 using Android.Graphics;
 using CustomLayouts.Controls;
+using CustomLayouts.Controls.CarouselLayout;
 using CustomLayouts.Droid.Renderers;
 
 [assembly:ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]

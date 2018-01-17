@@ -6,6 +6,7 @@ using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using System.ComponentModel;
 using System.Drawing;
+using CustomLayouts.Controls.CarouselLayout;
 
 [assembly:ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
 
