@@ -9,14 +9,14 @@ namespace CustomLayouts.Controls
 {
 	public class CarouselLayout : ScrollView
 	{
-		
-
 		readonly StackLayout _stack;
 
 		int _selectedIndex;
 
 		public CarouselLayout ()
 		{
+            HorizontalOptions = LayoutOptions.FillAndExpand;
+            VerticalOptions = LayoutOptions.FillAndExpand;
 			Orientation = ScrollOrientation.Horizontal;
 
 			_stack = new StackLayout {

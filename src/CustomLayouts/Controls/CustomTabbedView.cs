@@ -14,27 +14,78 @@ namespace CustomLayouts.Controls
     /// <typeparam name="T_CasualLayout"></typeparam>
     /// <typeparam name="T_Indicator"></typeparam>
     /// <typeparam name="T_Position"></typeparam>
-    class CustomTabbedView<T_CasualLayout,T_Indicator,T_Position> : RelativeLayout 
-        where T_CasualLayout : CarouselLayout where T_Indicator : BaseIndicator where T_Position : BaseTabPosition ,new()
+    public class CustomTabbedView : RelativeLayout 
     {
-        T_CasualLayout CasualLayout { get; set; }
-        T_Indicator Indicator { get; set; }
-        T_Position Generator { get; set; }
+        private CarouselLayout _CarouselLayout;
+        public CarouselLayout CasualLayout
+        {
+            get => _CarouselLayout;
+            set
+            {
+                _CarouselLayout = value;
+                InitialView();
+            }
+        }
+
+        private BaseIndicator _baseIndicator;
+        public BaseIndicator Indicator
+        {
+            get => _baseIndicator;
+            set
+            {
+                _baseIndicator = value;
+                InitialView();
+            }
+        }
+
+        private BaseTabPosition _baseTabPosition;
+        public BaseTabPosition Generator
+        {
+            get => _baseTabPosition;
+            set
+            {
+                _baseTabPosition = value;
+                InitialView();
+            }
+        }
+
         public CustomTabbedView()
         {
-            Generator = new T_Position();
-
             HorizontalOptions = LayoutOptions.FillAndExpand;
             VerticalOptions = LayoutOptions.FillAndExpand;
+        }
 
-            //pages
-            var pagesCarousel = Generator.CreatePagesCarousel();
+        void InitialView()
+        {
+            if (CasualLayout != null && Indicator != null && Generator != null)
+            {
+                try
+                {
+                    CasualLayout.SetBinding(CarouselLayout.ItemsSourceProperty, "Pages");
+                    CasualLayout.SetBinding(CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
 
-            //indicator
-            var dots = Generator.CreateIndicator();
+                    //目前先暫時這樣包裝
+                    if (Indicator is PagerIndicatorTabs bindableIndicator)
+                    {
+                        bindableIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");
+                        bindableIndicator.SetBinding(PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
+                        //bindableIndicator.SetBinding(CustomLayouts.Indicator.ItemsSourceProperty, "Pages");
+                        //bindableIndicator.SetBinding(CustomLayouts.Indicator.SelectedItemProperty, "CurrentPage");
+                    }
+                    else if (Indicator is PagerIndicatorDots bindableDotIndicator)
+                    {
+                        bindableDotIndicator.SetBinding(PagerIndicatorDots.ItemsSourceProperty, "Pages");
+                        bindableDotIndicator.SetBinding(PagerIndicatorDots.SelectedItemProperty, "CurrentPage");
+                    }
 
-            //generate position
-            Generator.InitializePosiotion(this, pagesCarousel, dots);
+                    //generate position
+                    Generator.InitializePosiotion(this, CasualLayout, Indicator as View);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
     }
 }

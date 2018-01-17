@@ -24,13 +24,5 @@ namespace CustomLayouts.Controls.Tabs
                 Constraint.RelativeToParent((parent) => { return parent.Height - tabsHeight; })
             );
         }
-
-        public override View CreateIndicator()
-        {
-            var pagerIndicator = new PagerIndicatorTabs();
-            pagerIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");
-            pagerIndicator.SetBinding(PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
-            return pagerIndicator;
-        }
     }
 }

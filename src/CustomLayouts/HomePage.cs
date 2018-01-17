@@ -25,21 +25,34 @@ namespace CustomLayouts
 
 		public HomePage(IndicatorStyleEnum indicatorStyle)
 		{
-            viewModel = new SwitcherPageViewModel();
-            BindingContext = viewModel;
-            Title = _indicatorStyle.ToString();
-
-            switch (indicatorStyle)
+            try
             {
-                case IndicatorStyleEnum.Dots:
-                    Content = new DotTabbedView();
-                    break;
-                case IndicatorStyleEnum.Tabs:
-                    Content = new TopIndicatorTabbedView();
-                    break;
-                case IndicatorStyleEnum.None:
-                    Content = new TopIndicatorTabbedView();
-                    break;
+                viewModel = new SwitcherPageViewModel();
+                BindingContext = viewModel;
+                Title = _indicatorStyle.ToString();
+
+                CustomTabbedView tabbedView = null;
+
+                switch (indicatorStyle)
+                {
+                    case IndicatorStyleEnum.Dots:
+                        tabbedView = new DotTabbedView();
+                        break;
+                    case IndicatorStyleEnum.Tabs:
+                        tabbedView = new TopIndicatorTabbedView();
+                        break;
+                    case IndicatorStyleEnum.None:
+                        tabbedView = new TopIndicatorTabbedView();
+                        break;
+                }
+
+                tabbedView.CasualLayout.ItemTemplate = new DataTemplate(typeof(HomeView));
+
+                Content = tabbedView;
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 	}

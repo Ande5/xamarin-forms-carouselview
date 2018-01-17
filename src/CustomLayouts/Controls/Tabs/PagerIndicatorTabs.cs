@@ -31,7 +31,6 @@ namespace CustomLayouts
             this.Content = GridContainer;
             this.Orientation = ScrollOrientation.Horizontal;
 
-
             /*
             var assembly = typeof(PagerIndicatorTabs).GetTypeInfo().Assembly;
             foreach (var res in assembly.GetManifestResourceNames())

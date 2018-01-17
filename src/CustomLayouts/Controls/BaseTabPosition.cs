@@ -26,29 +26,6 @@ namespace CustomLayouts.Controls
                         Constraint.RelativeToParent((parent) => { return parent.Width; }),
                         Constraint.RelativeToParent((parent) => { return parent.Height; }));
         }
-
-        /// <summary>
-        /// Create indicator
-        /// </summary>
-        /// <param name="casualLayout"></param>
-        /// <param name="indicator"></param>
-        public virtual View CreateIndicator()
-        {
-            return null;
-        }
-
-        public virtual CarouselLayout CreatePagesCarousel()
-        {
-            var carousel = new CarouselLayout()
-            {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                ItemTemplate = new DataTemplate(typeof(HomeView)),
-            };
-            carousel.SetBinding(CarouselLayout.ItemsSourceProperty, "Pages");
-            carousel.SetBinding(CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
-
-            return carousel;
-        }
+       
     }
 }

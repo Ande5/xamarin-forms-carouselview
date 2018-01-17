@@ -24,13 +24,5 @@ namespace CustomLayouts.Controls.Dots
                 Constraint.Constant(18)
             );
         }
-
-        public override View CreateIndicator()
-        {
-            var pagerIndicator = new PagerIndicatorDots() { DotSize = 5, DotColor = Color.Black };
-            pagerIndicator.SetBinding(PagerIndicatorDots.ItemsSourceProperty, "Pages");
-            pagerIndicator.SetBinding(PagerIndicatorDots.SelectedItemProperty, "CurrentPage");
-            return pagerIndicator;
-        }
     }
 }
