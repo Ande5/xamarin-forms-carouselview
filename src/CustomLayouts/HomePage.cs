@@ -14,18 +14,18 @@ namespace CustomLayouts
 
     public class HomePage : ContentPage
     {
-        private IndicatorStyleEnum _indicatorStyle;
-        private RelativeLayout relativeLayout;
-
         private readonly SwitcherPageViewModel viewModel;
 
         public HomePage(IndicatorStyleEnum indicatorStyle)
         {
             try
             {
+                //hidden navigation bar
+                //NavigationPage.SetHasNavigationBar(this, false);
+
                 viewModel = new SwitcherPageViewModel();
                 BindingContext = viewModel;
-                Title = _indicatorStyle.ToString();
+                Title = indicatorStyle.ToString();
 
                 CustomTabbedView tabbedView = null;
 
@@ -48,6 +48,7 @@ namespace CustomLayouts
             }
             catch (Exception ex)
             {
+
             }
         }
     }

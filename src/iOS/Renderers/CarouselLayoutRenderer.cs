@@ -7,6 +7,7 @@ using UIKit;
 using System.ComponentModel;
 using System.Drawing;
 using CustomLayouts.Controls.CarouselLayout;
+using CoreGraphics;
 
 [assembly:ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
 
@@ -33,10 +34,27 @@ namespace CustomLayouts.iOS.Renderers
 			e.NewElement.PropertyChanged += ElementPropertyChanged;
 		}
 
+        bool hasNavigation = true;
+
 		void NativeScrolled (object sender, EventArgs e)
 		{
-			var center = _native.ContentOffset.X + (_native.Bounds.Width / 2);
-			((CarouselLayout)Element).SelectedIndex = ((int)center) / ((int)_native.Bounds.Width);
+            try
+            {
+                if (!hasNavigation)
+                {
+                    //if goes in here, it means this page has no navigation bar
+                    //make horizontal scroll only
+                    //2018/1/18 : xamarin's bug
+                    _native.ContentSize = new CGSize(_native.ContentSize.Width, _native.Frame.Size.Height - 25);
+                }
+                
+                var center = _native.ContentOffset.X + (_native.Bounds.Width / 2);
+                ((CarouselLayout)Element).SelectedIndex = ((int)center) / ((int)_native.Bounds.Width);
+            }
+            catch
+            {
+                hasNavigation = false;
+            }
 		}
 
 		void ElementPropertyChanged(object sender, PropertyChangedEventArgs e) {
