@@ -2,7 +2,7 @@
 
 namespace CustomLayouts.Controls
 {
-    internal class TabTabbedView : CustomTabbedView
+    public class TabTabbedView : CustomTabbedView
     {
         public TabTabbedView()
         {

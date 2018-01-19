@@ -120,14 +120,21 @@ namespace CustomLayouts.Controls.CarouselLayout
             _stack.Children.Clear();
             foreach (var item in ItemsSource)
             {
-                var view = (View) ItemTemplate.CreateContent();
+                View view = null;
+
+                if(ItemTemplate is DataTemplateSelector dataTemplateSelector)
+                    view = (View)dataTemplateSelector.SelectTemplate(item, this).CreateContent();
+                else
+                    view = (View)ItemTemplate.CreateContent();
+
                 var bindableObject = view as BindableObject;
                 if (bindableObject != null)
                     bindableObject.BindingContext = item;
                 _stack.Children.Add(view);
             }
 
-            if (_selectedIndex >= 0) SelectedIndex = _selectedIndex;
+            if (_selectedIndex >= 0)
+                SelectedIndex = _selectedIndex;
         }
 
         private void UpdateSelectedIndex()

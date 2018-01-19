@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using CustomLayouts.Controls.Interface;
 using Xamarin.Forms;
@@ -37,9 +39,26 @@ namespace CustomLayouts.Controls.Tabs
         public TabIndicator()
         {
             //GridContainer.WidthRequest = 500;
-            GridContainer.RowDefinitions.Add(new RowDefinition {Height = 40});
-            Content = GridContainer;
+            GridContainer.RowDefinitions.Add(new RowDefinition {Height = 44});
+            GridContainer.VerticalOptions = LayoutOptions.FillAndExpand;
+
+
+            StackLayout layout = new StackLayout()
+            {
+                Spacing = 0,
+            };
+            layout.Children.Add(GridContainer);
+            layout.Children.Add(new BoxView()
+            {
+                HeightRequest = 1,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.FromHex("#DDDDDD"),
+                VerticalOptions = LayoutOptions.End,
+            });
+            Content = layout;
             Orientation = ScrollOrientation.Horizontal;
+
+            HeightRequest = 45;
 
             /*
             var assembly = typeof(PagerIndicatorTabs).GetTypeInfo().Assembly;
@@ -64,36 +83,7 @@ namespace CustomLayouts.Controls.Tabs
             foreach (var item in ItemsSource)
             {
                 var index = GridContainer.Children.Count;
-                var tab = new StackLayout
-                {
-                    Orientation = StackOrientation.Vertical,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
-                    Padding = new Thickness(7),
-                    WidthRequest = 70
-                };
-
-                if (item is ITabProvider homeViewModel)
-                    tab.Children.Add(new Label
-                    {
-                        Text = homeViewModel.Title,
-                        FontSize = 11,
-                        TextColor = Color.Black
-                    });
-
-                /*
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        tab.Children.Add(new Image { Source = "pin.png", HeightRequest = 20 });
-                        tab.Children.Add(new Label { Text = "Tab " + (index + 1), FontSize = 11 });
-                        break;
-
-                    case Device.Android:
-                        tab.Children.Add(new Image { Source = "pin.png", HeightRequest = 25 });
-                        break;
-                }
-                */
+                var tab = new Tab(item as ITabProvider);
 
                 var tgr = new TapGestureRecognizer();
                 tgr.Command = new Command(() => { SelectedItem = ItemsSource[index]; });
@@ -137,7 +127,7 @@ namespace CustomLayouts.Controls.Tabs
         public async void SelectedItemChanged()
         {
             var selectedIndex = ItemsSource.IndexOf(SelectedItem);
-            var pagerIndicators = GridContainer.Children.Cast<StackLayout>().ToList();
+            var pagerIndicators = GridContainer.Children.Cast<Tab>().ToList();
 
             foreach (var pi in pagerIndicators)
                 UnselectTab(pi);
@@ -151,19 +141,72 @@ namespace CustomLayouts.Controls.Tabs
             //目前要移動的位置
             var targetPoition = listWidth.Take(selectedIndex == 0 ? 0 : selectedIndex - 1).Sum();
 
-            //如果在可以捲動的範圍
-            if (targetPoition < GridContainer.Width - Width)
-                await ScrollToAsync(targetPoition, 0, true);
+            //捲動
+            targetPoition = Math.Min(targetPoition, GridContainer.Width - Width);
+            await ScrollToAsync(targetPoition, 0, true);
         }
 
-        private static void UnselectTab(StackLayout tab)
+        private static void UnselectTab(Tab tab)
         {
-            tab.Opacity = 0.5;
+            tab.UnselectTab();
         }
 
-        private static void SelectTab(StackLayout tab)
+        private static void SelectTab(Tab tab)
         {
-            tab.Opacity = 1.0;
+            tab.SelectTab();
+        }
+    }
+
+    /// <summary>
+    /// Tab
+    /// </summary>
+    public class Tab : StackLayout
+    {
+        public Label TextLabel { get; private set; }
+
+        public BoxView BottomView { get; private set; }
+
+        public Tab(ITabProvider provider)
+        {
+            Orientation = StackOrientation.Vertical;
+            HorizontalOptions = LayoutOptions.Center;
+            VerticalOptions = LayoutOptions.Center;
+            WidthRequest = 94;
+            HeightRequest = 44;
+            Spacing = 0;
+
+
+            this.Children.Add(TextLabel = new Label
+            {
+                Text = provider?.Title,
+                FontSize = 16,
+                HeightRequest=42,
+                TextColor = Color.Black,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                VerticalOptions= LayoutOptions.Center,
+            });
+
+            this.Children.Add(BottomView = new BoxView
+            {
+                HeightRequest = 2,
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.End,
+            });
+        }
+
+        public void SelectTab()
+        {
+            //tab.Opacity = 1.0;
+            TextLabel.TextColor = Color.FromHex("#954DB3");
+            BottomView.BackgroundColor = Color.FromHex("#954DB3");
+        }
+
+        public void UnselectTab()
+        {
+            // tab.Opacity = 0.5;
+            TextLabel.TextColor = Color.FromHex("#000000");
+            BottomView.BackgroundColor = Color.FromHex("#FFFFFF");
         }
     }
 }

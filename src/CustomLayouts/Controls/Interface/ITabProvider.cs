@@ -1,4 +1,6 @@
-﻿namespace CustomLayouts.Controls.Interface
+﻿using System.Drawing;
+
+namespace CustomLayouts.Controls.Interface
 {
     public interface ITabProvider
     {
