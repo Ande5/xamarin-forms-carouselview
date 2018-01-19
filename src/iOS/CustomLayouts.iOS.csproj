@@ -118,6 +118,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\CustomLayoutsDemo\CustomLayoutsDemo.csproj">
+      <Project>{5cf1e54f-e47a-4379-8a1a-8603772565ce}</Project>
+      <Name>CustomLayoutsDemo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomLayouts\CustomLayouts.csproj">
       <Project>{34bd627f-4414-486f-b051-ae34ef859848}</Project>
       <Name>CustomLayouts</Name>
