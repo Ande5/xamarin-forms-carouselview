@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace CustomLayouts
+namespace CustomLayoutsDemo
 {
     public class App : Application
     {

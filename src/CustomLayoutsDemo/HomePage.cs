@@ -1,9 +1,9 @@
 ﻿using System;
 using CustomLayouts.Controls;
-using CustomLayouts.ViewModels;
+using CustomLayoutsDemo.ViewModels;
 using Xamarin.Forms;
 
-namespace CustomLayouts
+namespace CustomLayoutsDemo
 {
     public enum IndicatorStyleEnum
     {
@@ -14,10 +14,9 @@ namespace CustomLayouts
 
     public class HomePage : ContentPage
     {
+        private readonly SwitcherPageViewModel viewModel;
         private IndicatorStyleEnum _indicatorStyle;
         private RelativeLayout relativeLayout;
-
-        private readonly SwitcherPageViewModel viewModel;
 
         public HomePage(IndicatorStyleEnum indicatorStyle)
         {
@@ -48,7 +47,6 @@ namespace CustomLayouts
             }
             catch (Exception ex)
             {
-
             }
         }
     }

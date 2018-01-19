@@ -9,13 +9,15 @@ using System.Drawing;
 using CustomLayouts.Controls.CarouselLayout;
 using CoreGraphics;
 
-[assembly:ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
+[assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
 
 namespace CustomLayouts.Platforms.ios
 {
     public class CarouselLayoutRenderer : ScrollViewRenderer
     {
         UIScrollView _native;
+
+        bool hasNavigation = true;
 
         public CarouselLayoutRenderer()
         {
@@ -29,12 +31,10 @@ namespace CustomLayouts.Platforms.ios
 
             if (e.OldElement != null) return;
 
-            _native = (UIScrollView)NativeView;
+            _native = (UIScrollView) NativeView;
             _native.Scrolled += NativeScrolled;
             e.NewElement.PropertyChanged += ElementPropertyChanged;
         }
-
-        bool hasNavigation = true;
 
         void NativeScrolled(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace CustomLayouts.Platforms.ios
                 }
 
                 var center = _native.ContentOffset.X + (_native.Bounds.Width / 2);
-                ((CarouselLayout)Element).SelectedIndex = ((int)center) / ((int)_native.Bounds.Width);
+                ((CarouselLayout) Element).SelectedIndex = ((int) center) / ((int) _native.Bounds.Width);
             }
             catch
             {
@@ -71,7 +71,7 @@ namespace CustomLayouts.Platforms.ios
 
             _native.SetContentOffset(new CoreGraphics.CGPoint
                 (_native.Bounds.Width *
-                    Math.Max(0, ((CarouselLayout)Element).SelectedIndex),
+                 Math.Max(0, ((CarouselLayout) Element).SelectedIndex),
                     _native.ContentOffset.Y),
                 animate);
         }
@@ -83,5 +83,3 @@ namespace CustomLayouts.Platforms.ios
         }
     }
 }
-
-

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using CustomLayouts.Controls.Interface;
 using Xamarin.Forms;
@@ -43,17 +42,17 @@ namespace CustomLayouts.Controls.Tabs
             GridContainer.VerticalOptions = LayoutOptions.FillAndExpand;
 
 
-            StackLayout layout = new StackLayout()
+            var layout = new StackLayout
             {
-                Spacing = 0,
+                Spacing = 0
             };
             layout.Children.Add(GridContainer);
-            layout.Children.Add(new BoxView()
+            layout.Children.Add(new BoxView
             {
                 HeightRequest = 1,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.FromHex("#DDDDDD"),
-                VerticalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.End
             });
             Content = layout;
             Orientation = ScrollOrientation.Horizontal;
@@ -158,14 +157,10 @@ namespace CustomLayouts.Controls.Tabs
     }
 
     /// <summary>
-    /// Tab
+    ///     Tab
     /// </summary>
     public class Tab : StackLayout
     {
-        public Label TextLabel { get; private set; }
-
-        public BoxView BottomView { get; private set; }
-
         public Tab(ITabProvider provider)
         {
             Orientation = StackOrientation.Vertical;
@@ -176,24 +171,28 @@ namespace CustomLayouts.Controls.Tabs
             Spacing = 0;
 
 
-            this.Children.Add(TextLabel = new Label
+            Children.Add(TextLabel = new Label
             {
                 Text = provider?.Title,
                 FontSize = 16,
-                HeightRequest=42,
+                HeightRequest = 42,
                 TextColor = Color.Black,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
-                VerticalOptions= LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
             });
 
-            this.Children.Add(BottomView = new BoxView
+            Children.Add(BottomView = new BoxView
             {
                 HeightRequest = 2,
                 HorizontalOptions = LayoutOptions.Fill,
-                VerticalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.End
             });
         }
+
+        public Label TextLabel { get; }
+
+        public BoxView BottomView { get; }
 
         public void SelectTab()
         {

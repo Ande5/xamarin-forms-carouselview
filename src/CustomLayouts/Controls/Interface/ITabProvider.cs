@@ -1,6 +1,4 @@
-﻿
-
-namespace CustomLayouts.Controls.Interface
+﻿namespace CustomLayouts.Controls.Interface
 {
     public interface ITabProvider
     {

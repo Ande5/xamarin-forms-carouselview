@@ -12,14 +12,17 @@ using CustomLayouts.Controls.CarouselLayout;
 using CustomLayouts.Platforms.Android;
 
 [assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
+
 namespace CustomLayouts.Platforms.Android
 {
     public class CarouselLayoutRenderer : ScrollViewRenderer
     {
-        int _prevScrollX;
         int _deltaX;
-        bool _motionDown;
         Timer _deltaXResetTimer;
+
+        bool _initialized = false;
+        bool _motionDown;
+        int _prevScrollX;
         Timer _scrollStopTimer;
         HorizontalScrollView _scrollView;
 
@@ -28,10 +31,10 @@ namespace CustomLayouts.Platforms.Android
             base.OnElementChanged(e);
             if (e.NewElement == null) return;
 
-            _deltaXResetTimer = new Timer(100) { AutoReset = false };
+            _deltaXResetTimer = new Timer(100) {AutoReset = false};
             _deltaXResetTimer.Elapsed += (object sender, ElapsedEventArgs args) => _deltaX = 0;
 
-            _scrollStopTimer = new Timer(200) { AutoReset = false };
+            _scrollStopTimer = new Timer(200) {AutoReset = false};
             _scrollStopTimer.Elapsed += (object sender, ElapsedEventArgs args2) => UpdateSelectedIndex();
 
             e.NewElement.PropertyChanged += ElementPropertyChanged;
@@ -41,7 +44,7 @@ namespace CustomLayouts.Platforms.Android
         {
             if (e.PropertyName == "Renderer")
             {
-                _scrollView = (HorizontalScrollView)typeof(ScrollViewRenderer)
+                _scrollView = (HorizontalScrollView) typeof(ScrollViewRenderer)
                     .GetField("_hScrollView", BindingFlags.NonPublic | BindingFlags.Instance)
                     .GetValue(this);
 
@@ -50,7 +53,7 @@ namespace CustomLayouts.Platforms.Android
             }
             if (e.PropertyName == CarouselLayout.SelectedIndexProperty.PropertyName && !_motionDown)
             {
-                ScrollToIndex(((CarouselLayout)this.Element).SelectedIndex);
+                ScrollToIndex(((CarouselLayout) this.Element).SelectedIndex);
             }
         }
 
@@ -84,37 +87,36 @@ namespace CustomLayouts.Platforms.Android
         void UpdateSelectedIndex()
         {
             var center = _scrollView.ScrollX + (_scrollView.Width / 2);
-            var carouselLayout = (CarouselLayout)this.Element;
+            var carouselLayout = (CarouselLayout) this.Element;
             carouselLayout.SelectedIndex = (center / _scrollView.Width);
         }
 
         void SnapScroll()
         {
-            var roughIndex = (float)_scrollView.ScrollX / _scrollView.Width;
+            var roughIndex = (float) _scrollView.ScrollX / _scrollView.Width;
 
             var targetIndex =
-                _deltaX < 0 ? Math.Floor(roughIndex)
-                : _deltaX > 0 ? Math.Ceil(roughIndex)
-                : Math.Round(roughIndex);
+                _deltaX < 0
+                    ? Math.Floor(roughIndex)
+                    : _deltaX > 0
+                        ? Math.Ceil(roughIndex)
+                        : Math.Round(roughIndex);
 
-            ScrollToIndex((int)targetIndex);
+            ScrollToIndex((int) targetIndex);
         }
 
         void ScrollToIndex(int targetIndex)
         {
             var targetX = targetIndex * _scrollView.Width;
-            _scrollView.Post(new Runnable(() => {
-                _scrollView.SmoothScrollTo(targetX, 0);
-            }));
+            _scrollView.Post(new Runnable(() => { _scrollView.SmoothScrollTo(targetX, 0); }));
         }
 
-        bool _initialized = false;
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
             if (_initialized) return;
             _initialized = true;
-            var carouselLayout = (CarouselLayout)this.Element;
+            var carouselLayout = (CarouselLayout) this.Element;
             _scrollView.ScrollTo(carouselLayout.SelectedIndex * Width, 0);
         }
 

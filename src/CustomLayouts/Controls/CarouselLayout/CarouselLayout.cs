@@ -122,10 +122,10 @@ namespace CustomLayouts.Controls.CarouselLayout
             {
                 View view = null;
 
-                if(ItemTemplate is DataTemplateSelector dataTemplateSelector)
-                    view = (View)dataTemplateSelector.SelectTemplate(item, this).CreateContent();
+                if (ItemTemplate is DataTemplateSelector dataTemplateSelector)
+                    view = (View) dataTemplateSelector.SelectTemplate(item, this).CreateContent();
                 else
-                    view = (View)ItemTemplate.CreateContent();
+                    view = (View) ItemTemplate.CreateContent();
 
                 var bindableObject = view as BindableObject;
                 if (bindableObject != null)

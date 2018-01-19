@@ -3,7 +3,7 @@ using System.Linq;
 using CustomLayouts.Controls.Interface;
 using Xamarin.Forms;
 
-namespace CustomLayouts.ViewModels
+namespace CustomLayoutsDemo.ViewModels
 {
     public class SwitcherPageViewModel : BaseViewModel
     {
