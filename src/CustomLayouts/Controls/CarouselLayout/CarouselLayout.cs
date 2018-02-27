@@ -1,19 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CustomLayouts.Controls.Interface;
 using Xamarin.Forms;
 
 namespace CustomLayouts.Controls.CarouselLayout
 {
     public class CarouselLayout : ScrollView
     {
+        public EventHandler<int> OnSelectdPageChanged { get; set; }
+
         public static readonly BindableProperty SelectedIndexProperty =
             BindableProperty.Create(
                 nameof(SelectedIndex),
                 typeof(int),
                 typeof(CarouselLayout),
-                0,
+                -1,
                 BindingMode.TwoWay,
                 propertyChanged: async (bindable, oldValue, newValue) =>
                 {
@@ -76,7 +80,23 @@ namespace CustomLayouts.Controls.CarouselLayout
         public int SelectedIndex
         {
             get => (int) GetValue(SelectedIndexProperty);
-            set => SetValue(SelectedIndexProperty, value);
+            set
+            {
+                if (SelectedIndex != value)
+                {
+                    //set index
+                    SetValue(SelectedIndexProperty, value);
+
+                    //notify selected page changed
+                    var page = SelectedIndex > -1 ? Children[SelectedIndex] : null;
+                    if (page is IPageProvider pageProvider)
+                    {
+                        pageProvider.OnPageSelected();
+                        OnSelectdPageChanged?.Invoke(SelectedIndex, SelectedIndex);
+                    }
+                }
+            }
+            
         }
 
         public IList ItemsSource

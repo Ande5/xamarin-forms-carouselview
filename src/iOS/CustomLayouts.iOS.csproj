@@ -122,9 +122,9 @@
       <Project>{5cf1e54f-e47a-4379-8a1a-8603772565ce}</Project>
       <Name>CustomLayoutsDemo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CustomLayouts\CustomLayouts.csproj">
-      <Project>{34bd627f-4414-486f-b051-ae34ef859848}</Project>
-      <Name>CustomLayouts</Name>
+    <ProjectReference Include="..\CustomLayouts\CarouselView.csproj">
+      <Project>{d256b981-15b1-4581-a937-e0e3ecbf0fa4}</Project>
+      <Name>CarouselView</Name>
     </ProjectReference>
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CustomLayouts\CustomLayouts.csproj" />
+    <ProjectReference Include="..\CustomLayouts\CarouselView.csproj" />
   </ItemGroup>
 
 </Project>

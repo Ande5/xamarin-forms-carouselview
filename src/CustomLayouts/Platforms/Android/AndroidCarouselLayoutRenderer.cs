@@ -10,6 +10,7 @@ using Android.Graphics;
 using CustomLayouts.Controls;
 using CustomLayouts.Controls.CarouselLayout;
 using CustomLayouts.Platforms.Android;
+using Android.Content;
 
 [assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
 
@@ -25,6 +26,13 @@ namespace CustomLayouts.Platforms.Android
         int _prevScrollX;
         Timer _scrollStopTimer;
         HorizontalScrollView _scrollView;
+
+        /*
+        public CarouselLayoutRenderer(Context context) : base(context)
+        {
+
+        }
+        */
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
