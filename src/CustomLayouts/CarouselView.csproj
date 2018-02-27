@@ -4,14 +4,14 @@
     <TargetFrameworks>netstandard2.0;MonoAndroid80;Xamarin.iOS10;</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/aritchie/userdialogs</PackageProjectUrl>
-    <Authors>Allan Ritchie</Authors>
-    <Description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, Unified Windows Platform (UWP, UAP) and Tizen</Description>
-    <PackageLicenseUrl>https://github.com/aritchie/userdialogs/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageTags>windows ios android xamarin xam.pcl dialogs plugin</PackageTags>
+    <PackageProjectUrl>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview</PackageProjectUrl>
+    <Authors>andy840119</Authors>
+    <Description>A casual view that has several common type. Supports Android and iOS</Description>
+    <PackageLicenseUrl>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageLicenseUrl>
+    <PackageTags>windows ios casualView</PackageTags>
     <PackageVersion>7.0.0</PackageVersion>
-    <PackageReleaseNotes>https://github.com/aritchie/userdialogs/blob/master/docs/changelog.md</PackageReleaseNotes>
-    <PackageIconUrl>https://github.com/aritchie/userdialogs/raw/master/icon.png</PackageIconUrl>
+    <PackageReleaseNotes>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageReleaseNotes>
+    <PackageIconUrl></PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
@@ -40,15 +40,15 @@
     <Compile Include="Platforms\Shared\**\*.cs" />
     <Compile Include="Platforms\Android\**\*.cs" />
     <PackageReference Include="NETStandard.Library" Version="2.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" version="26.1.0.1"/>
+    <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" version="26.1.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Design" version="26.1.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" version="26.1.0.1"/>
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" version="26.1.0.1"/>
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" version="26.1.0.1"/>
-    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" version="26.1.0.1"/>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" version="26.1.0.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" version="26.1.0.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" version="26.1.0.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" version="26.1.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Vector.Drawable" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Forms" version="2.5.0.122203"/>
+    <PackageReference Include="Xamarin.Forms" version="2.5.0.122203" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
