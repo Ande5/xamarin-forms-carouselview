@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using CustomLayouts.Controls.Interface;
+using CarouselView.Controls.Indicator.Interface;
+using CarouselView.Controls.Interface;
 using Xamarin.Forms;
 
-namespace CustomLayouts.Controls.Dots
+namespace CarouselView.Controls.Indicator.Dots
 {
     /// <summary>
     ///     dot style indicator

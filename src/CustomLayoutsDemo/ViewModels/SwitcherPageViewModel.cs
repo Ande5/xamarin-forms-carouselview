@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CustomLayouts.Controls.Interface;
+using CarouselView.Controls.Interface;
 using Xamarin.Forms;
 
 namespace CustomLayoutsDemo.ViewModels

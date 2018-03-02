@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace CustomLayouts.Controls
+namespace CarouselView.Controls.Indicator
 {
     /// <summary>
     /// </summary>
@@ -17,10 +17,10 @@ namespace CustomLayouts.Controls
         public virtual void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {
             layout.Children.Add(casualLayout,
-                Constraint.RelativeToParent(parent => { return parent.X; }),
-                Constraint.RelativeToParent(parent => { return parent.Y; }),
-                Constraint.RelativeToParent(parent => { return parent.Width; }),
-                Constraint.RelativeToParent(parent => { return parent.Height; }));
+                Constraint.RelativeToParent(parent => parent.X),
+                Constraint.RelativeToParent(parent => parent.Y),
+                Constraint.RelativeToParent(parent => parent.Width),
+                Constraint.RelativeToParent(parent => parent.Height));
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CustomLayouts.Controls.Interface
+﻿namespace CarouselView.Controls.Interface
 {
     /// <summary>
     /// if page inherit this ,will notify this page

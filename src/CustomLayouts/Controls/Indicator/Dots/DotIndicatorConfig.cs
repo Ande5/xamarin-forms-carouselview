@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace CustomLayouts.Controls.Dots
+namespace CarouselView.Controls.Indicator.Dots
 {
     public class DotIndicatorConfig : BaseIndicatorConfig
     {

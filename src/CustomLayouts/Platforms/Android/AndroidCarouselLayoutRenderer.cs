@@ -7,8 +7,6 @@ using Android.Widget;
 using Android.Views;
 using System.ComponentModel;
 using Android.Graphics;
-using CustomLayouts.Controls;
-using CustomLayouts.Controls.CarouselLayout;
 using CustomLayouts.Platforms.Android;
 using Android.Content;
 

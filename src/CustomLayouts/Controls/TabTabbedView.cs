@@ -1,6 +1,6 @@
-﻿using CustomLayouts.Controls.Tabs;
+﻿using CarouselView.Controls.Indicator.Tabs;
 
-namespace CustomLayouts.Controls
+namespace CarouselView.Controls
 {
     public class TabTabbedView : CustomTabbedView
     {

@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace CustomLayouts.Controls.Tabs
+namespace CarouselView.Controls.Indicator.Tabs
 {
     internal class TabIndicatorConfig : BaseIndicatorConfig
     {

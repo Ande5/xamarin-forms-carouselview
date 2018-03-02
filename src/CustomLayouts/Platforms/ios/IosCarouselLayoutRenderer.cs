@@ -1,12 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
-using CustomLayouts.Controls;
 using CustomLayouts.Platforms.ios;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using System.ComponentModel;
 using System.Drawing;
-using CustomLayouts.Controls.CarouselLayout;
 using CoreGraphics;
 
 [assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]

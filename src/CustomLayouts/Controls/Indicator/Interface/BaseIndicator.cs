@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Xamarin.Forms;
 
-namespace CustomLayouts.Controls
+namespace CarouselView.Controls.Indicator.Interface
 {
     /// <summary>
     ///     all indicator need to inherit the interface of View

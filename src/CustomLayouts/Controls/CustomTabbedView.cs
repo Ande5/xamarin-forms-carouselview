@@ -1,9 +1,11 @@
 ﻿using System;
-using CustomLayouts.Controls.Dots;
-using CustomLayouts.Controls.Tabs;
+using CarouselView.Controls.Indicator;
+using CarouselView.Controls.Indicator.Dots;
+using CarouselView.Controls.Indicator.Interface;
+using CarouselView.Controls.Indicator.Tabs;
 using Xamarin.Forms;
 
-namespace CustomLayouts.Controls
+namespace CarouselView.Controls
 {
     /// <summary>
     ///     CustomTabbedView need assigh :

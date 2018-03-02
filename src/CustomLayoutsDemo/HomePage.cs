@@ -1,5 +1,5 @@
 ﻿using System;
-using CustomLayouts.Controls;
+using CarouselView.Controls;
 using CustomLayoutsDemo.ViewModels;
 using Xamarin.Forms;
 

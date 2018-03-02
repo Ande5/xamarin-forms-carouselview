@@ -1,4 +1,4 @@
-﻿namespace CustomLayouts.Controls.Interface
+﻿namespace CarouselView.Controls.Interface
 {
     public interface ITabProvider
     {

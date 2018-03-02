@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CustomLayouts.Controls.Interface;
+using CarouselView.Controls.Interface;
 using Xamarin.Forms;
 
-namespace CustomLayouts.Controls.CarouselLayout
+namespace CarouselView.Controls.CarouselLayout
 {
     public class CarouselLayout : ScrollView
     {

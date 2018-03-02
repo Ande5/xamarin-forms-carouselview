@@ -1,7 +1,7 @@
-﻿using CustomLayouts.Controls.Dots;
+﻿using CarouselView.Controls.Indicator.Dots;
 using Xamarin.Forms;
 
-namespace CustomLayouts.Controls
+namespace CarouselView.Controls
 {
     public class DotTabbedView : CustomTabbedView
     {
