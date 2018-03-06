@@ -6,6 +6,7 @@ using UIKit;
 using System.ComponentModel;
 using System.Drawing;
 using CoreGraphics;
+using CarouselView.Controls.CarouselLayout;
 
 [assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
 
