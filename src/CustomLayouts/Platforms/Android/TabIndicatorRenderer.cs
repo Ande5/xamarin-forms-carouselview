@@ -78,13 +78,15 @@ namespace CarouselView.Platforms.Android
             int x = (int)context.ToPixels(e.ScrollX);
             int y = (int)context.ToPixels(e.ScrollY);
 
-            ScrollTo(x, y);
+            ScrollTo(x, y,500);
         }
         
 
-        public new void ScrollTo(int targetX, int targetY)
+        public void ScrollTo(int targetX, int targetY,int duration=500)
         {
-            int duration = 500;
+            //https://stackoverflow.com/questions/8642677/reduce-speed-of-smooth-scroll-in-scroll-view/33013806
+            //TODO : android animation is weird 
+
             ObjectAnimator animator = ObjectAnimator.OfInt(target: _scrollView, propertyName: "scrollX", values: targetX);
             animator.SetDuration(duration);
             animator.Start();

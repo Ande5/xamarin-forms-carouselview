@@ -9,7 +9,7 @@
     <Description>A casual view that has several common type. Supports Android and iOS</Description>
     <PackageLicenseUrl>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageLicenseUrl>
     <PackageTags>windows ios casualView</PackageTags>
-    <PackageVersion>7.0.0</PackageVersion>
+    <PackageVersion>7.0.1</PackageVersion>
     <PackageReleaseNotes>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageReleaseNotes>
     <PackageIconUrl></PackageIconUrl>
   </PropertyGroup>
