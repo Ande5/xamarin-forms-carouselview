@@ -10,8 +10,6 @@ namespace CarouselView.Controls.CarouselLayout
 {
     public class CarouselLayout : ScrollView
     {
-        public EventHandler<int> OnSelectdPageChanged { get; set; }
-
         public static readonly BindableProperty SelectedIndexProperty =
             BindableProperty.Create(
                 nameof(SelectedIndex),
@@ -75,6 +73,8 @@ namespace CarouselView.Controls.CarouselLayout
             Content = _stack;
         }
 
+        public EventHandler<int> OnSelectdPageChanged { get; set; }
+
         public IList<View> Children => _stack.Children;
 
         public int SelectedIndex
@@ -96,7 +96,6 @@ namespace CarouselView.Controls.CarouselLayout
                     }
                 }
             }
-            
         }
 
         public IList ItemsSource

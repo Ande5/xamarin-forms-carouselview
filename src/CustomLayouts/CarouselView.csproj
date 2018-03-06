@@ -17,12 +17,12 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <DefineConstants>$(DefineConstants);NETSTANDARD;BAIT</DefineConstants>
-    <Product>Acr.UserDialogs - .NET Standard 2</Product>
+    <Product>CarouselView - .NET Standard 2</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
     <DefineConstants>$(DefineConstants);__IOS__</DefineConstants>
-    <Product>Acr.UserDialogs - iOS</Product>
+    <Product>CarouselView - iOS</Product>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,7 +53,7 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
     <Compile Include="Platforms\Shared\**\*.cs" />
-    <Compile Include="Platforms\ios\**\*.cs" />
+    <Compile Include="Platforms\iOS\**\*.cs" />
     <Reference Include="OpenTK-1.0" />
     <PackageReference Include="NETStandard.Library" Version="2.0.1" />
   </ItemGroup>

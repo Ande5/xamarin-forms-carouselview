@@ -1,16 +1,16 @@
 ﻿using System;
 using Xamarin.Forms;
-using CustomLayouts.Platforms.ios;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using System.ComponentModel;
 using System.Drawing;
 using CoreGraphics;
 using CarouselView.Controls.CarouselLayout;
+using CarouselView.Platforms.iOS;
 
 [assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
 
-namespace CustomLayouts.Platforms.ios
+namespace CarouselView.Platforms.iOS
 {
     public class CarouselLayoutRenderer : ScrollViewRenderer
     {
