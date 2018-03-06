@@ -1,20 +1,23 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
+﻿using System.ComponentModel;
 using System.Reflection;
-using Java.Lang;
 using System.Timers;
-using Android.Widget;
-using Android.Views;
-using System.ComponentModel;
-using Android.Graphics;
-using CustomLayouts.Platforms.Android;
+using Android.Animation;
 using Android.Content;
+using Android.Graphics;
+using Android.Views;
+using Android.Widget;
 using CarouselView.Controls.CarouselLayout;
+using CarouselView.Controls.Indicator.Tabs;
+using CarouselView.Platforms.Android;
+using Java.Lang;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using View = Android.Views.View;
 
-[assembly: ExportRenderer(typeof(CarouselLayout), typeof(CarouselLayoutRenderer))]
-namespace CustomLayouts.Platforms.Android
+[assembly: ExportRenderer(typeof(TabIndicator), typeof(TabIndicatorRenderer))]
+namespace CarouselView.Platforms.Android
 {
-    public class CarouselLayoutRenderer : ScrollViewRenderer
+    public class TabIndicatorRenderer : ScrollViewRenderer
     {
         int _deltaX;
         Timer _deltaXResetTimer;
@@ -25,22 +28,22 @@ namespace CustomLayouts.Platforms.Android
         Timer _scrollStopTimer;
         HorizontalScrollView _scrollView;
 
-        
-        public CarouselLayoutRenderer(Context context) : base(context)
+
+        public TabIndicatorRenderer(Context context) : base(context)
         {
 
         }
-        
+
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
             base.OnElementChanged(e);
             if (e.NewElement == null) return;
 
-            _deltaXResetTimer = new Timer(100) {AutoReset = false};
+            _deltaXResetTimer = new Timer(100) { AutoReset = false };
             _deltaXResetTimer.Elapsed += (object sender, ElapsedEventArgs args) => _deltaX = 0;
 
-            _scrollStopTimer = new Timer(200) {AutoReset = false};
+            _scrollStopTimer = new Timer(200) { AutoReset = false };
             _scrollStopTimer.Elapsed += (object sender, ElapsedEventArgs args2) => UpdateSelectedIndex();
 
             e.NewElement.PropertyChanged += ElementPropertyChanged;
@@ -50,7 +53,7 @@ namespace CustomLayouts.Platforms.Android
         {
             if (e.PropertyName == "Renderer")
             {
-                _scrollView = (HorizontalScrollView) typeof(ScrollViewRenderer)
+                _scrollView = (HorizontalScrollView)typeof(ScrollViewRenderer)
                     .GetField("_hScrollView", BindingFlags.NonPublic | BindingFlags.Instance)
                     .GetValue(this);
 
@@ -59,11 +62,11 @@ namespace CustomLayouts.Platforms.Android
             }
             if (e.PropertyName == CarouselLayout.SelectedIndexProperty.PropertyName && !_motionDown)
             {
-                ScrollToIndex(((CarouselLayout) this.Element).SelectedIndex);
+                ScrollToIndex(((TabIndicator)this.Element).SelectedIndex);
             }
         }
 
-        void HScrollViewTouch(object sender, TouchEventArgs e)
+        void HScrollViewTouch(object sender, View.TouchEventArgs e)
         {
             e.Handled = false;
 
@@ -93,13 +96,13 @@ namespace CustomLayouts.Platforms.Android
         void UpdateSelectedIndex()
         {
             var center = _scrollView.ScrollX + (_scrollView.Width / 2);
-            var carouselLayout = (CarouselLayout) this.Element;
-            carouselLayout.SelectedIndex = (center / _scrollView.Width);
+            var carouselLayout = (TabIndicator)this.Element;
+            //carouselLayout.SelectedIndex = (center / _scrollView.Width);
         }
 
         void SnapScroll()
         {
-            var roughIndex = (float) _scrollView.ScrollX / _scrollView.Width;
+            var roughIndex = (float)_scrollView.ScrollX / _scrollView.Width;
 
             var targetIndex =
                 _deltaX < 0
@@ -108,7 +111,7 @@ namespace CustomLayouts.Platforms.Android
                         ? Math.Ceil(roughIndex)
                         : Math.Round(roughIndex);
 
-            ScrollToIndex((int) targetIndex);
+            ScrollToIndex((int)targetIndex);
         }
 
         void ScrollToIndex(int targetIndex)
@@ -122,7 +125,7 @@ namespace CustomLayouts.Platforms.Android
             base.Draw(canvas);
             if (_initialized) return;
             _initialized = true;
-            var carouselLayout = (CarouselLayout) this.Element;
+            var carouselLayout = (TabIndicator)this.Element;
             _scrollView.ScrollTo(carouselLayout.SelectedIndex * Width, 0);
         }
 
@@ -134,5 +137,14 @@ namespace CustomLayouts.Platforms.Android
             }
             base.OnSizeChanged(w, h, oldw, oldh);
         }
+
+        
+        public void ScrollTo(int targetXScroll,long duration = 500)
+        {
+            ObjectAnimator animator = ObjectAnimator.OfInt(_scrollView, "scrollX", targetXScroll);
+            animator.SetDuration(duration);
+            animator.Start();
+        }
+        
     }
 }
