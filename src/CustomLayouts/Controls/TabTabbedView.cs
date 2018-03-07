@@ -5,7 +5,6 @@ namespace CarouselView.Controls
 {
     public class TabTabbedView : TabTabbedView<Tab>
     {
-
     }
 
     public class TabTabbedView<T_Tab> : CustomTabbedView where T_Tab : Tab, new()

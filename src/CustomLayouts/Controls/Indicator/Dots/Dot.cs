@@ -1,8 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-using CarouselView.Controls.Indicator.Interface;
+﻿using System;
 using CarouselView.Controls.Interface;
 using Xamarin.Forms;
 
@@ -11,7 +7,7 @@ namespace CarouselView.Controls.Indicator.Dots
     /// <summary>
     ///     Dot
     /// </summary>
-    public class Dot : Button , IDot
+    public class Dot : Button, IDot
     {
         public int index { get; set; }
 
@@ -21,7 +17,6 @@ namespace CarouselView.Controls.Indicator.Dots
 
         public void Initialize(ITabProvider provider)
         {
-            
             BorderRadius = Convert.ToInt32(DotSize / 2);
             HeightRequest = DotSize;
             WidthRequest = DotSize;

@@ -3,7 +3,7 @@
 namespace CarouselView.Controls.Indicator.Interface
 {
     /// <summary>
-    /// indicator component
+    ///     indicator component
     /// </summary>
     public interface IindicatorComponent
     {

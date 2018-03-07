@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CarouselView.Controls.Indicator.Interface;
+﻿using CarouselView.Controls.Indicator.Interface;
 using Xamarin.Forms;
 
 namespace CarouselView.Controls.Indicator.Dots

@@ -1,8 +1,6 @@
 ﻿using System;
 using CarouselView.Controls.Indicator;
-using CarouselView.Controls.Indicator.Dots;
 using CarouselView.Controls.Indicator.Interface;
-using CarouselView.Controls.Indicator.Tabs;
 using Xamarin.Forms;
 
 namespace CarouselView.Controls
@@ -19,6 +17,14 @@ namespace CarouselView.Controls
 
         private BaseIndicatorConfig _baseTabPosition;
         private CarouselLayout.CarouselLayout _carouselLayout;
+
+        public CustomTabbedView()
+        {
+            HorizontalOptions = LayoutOptions.FillAndExpand;
+            VerticalOptions = LayoutOptions.FillAndExpand;
+
+            InitialComponent();
+        }
 
         public CarouselLayout.CarouselLayout CasualLayout
         {
@@ -50,17 +56,8 @@ namespace CarouselView.Controls
             }
         }
 
-        public CustomTabbedView()
-        {
-            HorizontalOptions = LayoutOptions.FillAndExpand;
-            VerticalOptions = LayoutOptions.FillAndExpand;
-
-            InitialComponent();
-        }
-
         protected virtual void InitialComponent()
         {
-
         }
 
         protected virtual void InitialView()
@@ -81,13 +78,11 @@ namespace CarouselView.Controls
                 }
                 catch (Exception ex)
                 {
-
                 }
         }
 
         protected virtual void InitialIndicator()
         {
-
         }
     }
 }

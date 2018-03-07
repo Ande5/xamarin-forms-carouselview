@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using CarouselView.Controls.Indicator.Interface;
 using CarouselView.Controls.Interface;
@@ -10,7 +9,7 @@ namespace CarouselView.Controls.Indicator.Dots
     /// <summary>
     ///     dot style indicator
     /// </summary>
-    public class DotIndicator<T_Tab> : StackLayout, Iindicator where T_Tab : Xamarin.Forms.View, IDot, new()
+    public class DotIndicator<T_Tab> : StackLayout, Iindicator where T_Tab : View, IDot, new()
     {
         public static BindableProperty ItemsSourceProperty =
             BindableProperty.Create(
@@ -23,7 +22,10 @@ namespace CarouselView.Controls.Indicator.Dots
                 {
                     ((DotIndicator<T_Tab>) bindable).ItemsSourceChanging();
                 },
-                propertyChanged: (bindable, oldValue, newValue) => { ((DotIndicator<T_Tab>) bindable).ItemsSourceChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) =>
+                {
+                    ((DotIndicator<T_Tab>) bindable).ItemsSourceChanged();
+                }
             );
 
         public static BindableProperty SelectedItemProperty =
@@ -33,7 +35,10 @@ namespace CarouselView.Controls.Indicator.Dots
                 typeof(DotIndicator<T_Tab>),
                 null,
                 BindingMode.TwoWay,
-                propertyChanged: (bindable, oldValue, newValue) => { ((DotIndicator<T_Tab>) bindable).SelectedItemChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) =>
+                {
+                    ((DotIndicator<T_Tab>) bindable).SelectedItemChanged();
+                }
             );
 
         public DotIndicator()
@@ -53,7 +58,7 @@ namespace CarouselView.Controls.Indicator.Dots
         {
             foreach (var item in ItemsSource)
             {
-                int index = Children.Count;
+                var index = Children.Count;
                 var tab = item as ITabProvider;
                 var dot = new T_Tab();
                 dot.index = index;

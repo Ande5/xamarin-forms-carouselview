@@ -5,15 +5,14 @@ namespace CarouselView.Controls
 {
     public class DotTabbedView : DotTabbedView<Dot>
     {
-
     }
 
-    public class DotTabbedView<T_Dot> : CustomTabbedView where T_Dot : Dot , new()
+    public class DotTabbedView<T_Dot> : CustomTabbedView where T_Dot : Dot, new()
     {
         protected override void InitialComponent()
         {
             base.InitialComponent();
-            Indicator = new DotIndicator<T_Dot> { DotSize = 5, DotColor = Color.Black };
+            Indicator = new DotIndicator<T_Dot> {DotSize = 5, DotColor = Color.Black};
             CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new DotIndicatorConfig();
         }

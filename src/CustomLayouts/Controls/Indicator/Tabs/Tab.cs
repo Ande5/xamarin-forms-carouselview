@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CarouselView.Controls.Indicator.Interface;
-using CarouselView.Controls.Interface;
+﻿using CarouselView.Controls.Interface;
 using Xamarin.Forms;
 
 namespace CarouselView.Controls.Indicator.Tabs
@@ -10,16 +6,16 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// <summary>
     ///     Tab
     /// </summary>
-    public class Tab : StackLayout , ITab
+    public class Tab : StackLayout, ITab
     {
-        /// <summary>
-        /// Index
-        /// </summary>
-        public int index { get; set; }
-
         protected Label TextLabel { get; set; }
 
         protected BoxView BottomView { get; set; }
+
+        /// <summary>
+        ///     Index
+        /// </summary>
+        public int index { get; set; }
 
         public virtual void Initialize(ITabProvider provider)
         {
@@ -62,7 +58,5 @@ namespace CarouselView.Controls.Indicator.Tabs
             TextLabel.TextColor = Color.FromHex("#000000");
             BottomView.BackgroundColor = Color.FromHex("#FFFFFF");
         }
-
-        
     }
 }

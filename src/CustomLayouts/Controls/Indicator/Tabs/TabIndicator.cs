@@ -10,7 +10,7 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// <summary>
     ///     tab style indicator
     /// </summary>
-    public class TabIndicator<T_Tab> : TabIndicatorScrollView, Iindicator where T_Tab : Xamarin.Forms.View , ITab, new()
+    public class TabIndicator<T_Tab> : TabIndicatorScrollView, Iindicator where T_Tab : View, ITab, new()
     {
         public static BindableProperty ItemsSourceProperty =
             BindableProperty.Create(
@@ -23,7 +23,10 @@ namespace CarouselView.Controls.Indicator.Tabs
                 {
                     ((TabIndicator<T_Tab>) bindable).ItemsSourceChanging();
                 },
-                propertyChanged: (bindable, oldValue, newValue) => { ((TabIndicator<T_Tab>) bindable).ItemsSourceChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) =>
+                {
+                    ((TabIndicator<T_Tab>) bindable).ItemsSourceChanged();
+                }
             );
 
         public static BindableProperty SelectedItemProperty =
@@ -33,7 +36,10 @@ namespace CarouselView.Controls.Indicator.Tabs
                 typeof(TabIndicator<T_Tab>),
                 null,
                 BindingMode.TwoWay,
-                propertyChanged: (bindable, oldValue, newValue) => { ((TabIndicator<T_Tab>) bindable).SelectedItemChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) =>
+                {
+                    ((TabIndicator<T_Tab>) bindable).SelectedItemChanged();
+                }
             );
 
         public TabIndicator()
@@ -162,8 +168,8 @@ namespace CarouselView.Controls.Indicator.Tabs
     }
 
     /// <summary>
-    /// this class is just use for android renderer
-    /// <see cref="CarouselView.Platforms.Android.TabIndicatorRenderer"/>
+    ///     this class is just use for android renderer
+    ///     <see cref="CarouselView.Platforms.Android.TabIndicatorRenderer" />
     /// </summary>
     public class TabIndicatorScrollView : ScrollView
     {
