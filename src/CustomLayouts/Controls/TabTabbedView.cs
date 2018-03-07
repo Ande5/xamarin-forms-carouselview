@@ -3,11 +3,17 @@ using Xamarin.Forms;
 
 namespace CarouselView.Controls
 {
-    public class TabTabbedView : CustomTabbedView
+    public class TabTabbedView : TabTabbedView<Tab>
     {
-        public TabTabbedView()
+
+    }
+
+    public class TabTabbedView<T_Tab> : CustomTabbedView where T_Tab : Tab, new()
+    {
+        protected override void InitialComponent()
         {
-            Indicator = new TabIndicator<Tab>();
+            base.InitialComponent();
+            Indicator = new TabIndicator<T_Tab>();
             CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new TabIndicatorConfig();
         }
@@ -15,10 +21,10 @@ namespace CarouselView.Controls
         protected override void InitialIndicator()
         {
             base.InitialIndicator();
-            if (Indicator is TabIndicator<Tab> bindableIndicator)
+            if (Indicator is TabIndicator<T_Tab> bindableIndicator)
             {
-                bindableIndicator.SetBinding(TabIndicator<Tab>.ItemsSourceProperty, "Pages");
-                bindableIndicator.SetBinding(TabIndicator<Tab>.SelectedItemProperty, "CurrentPage");
+                bindableIndicator.SetBinding(TabIndicator<T_Tab>.ItemsSourceProperty, "Pages");
+                bindableIndicator.SetBinding(TabIndicator<T_Tab>.SelectedItemProperty, "CurrentPage");
                 //bindableIndicator.SetBinding(CustomLayouts.Indicator.ItemsSourceProperty, "Pages");
                 //bindableIndicator.SetBinding(CustomLayouts.Indicator.SelectedItemProperty, "CurrentPage");
             }

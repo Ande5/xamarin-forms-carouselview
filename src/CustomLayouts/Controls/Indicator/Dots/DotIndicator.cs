@@ -87,18 +87,6 @@ namespace CarouselView.Controls.Indicator.Dots
             if (ItemsSource == null) return;
 
             CreateTabs();
-            /*
-            // Dots *************************************
-            var countDelta = ItemsSource.Count - Children.Count;
-
-            if (countDelta > 0)
-                for (var i = 0; i < countDelta; i++)
-                    CreateDot(i);
-            else if (countDelta < 0)
-                for (var i = 0; i < -countDelta; i++)
-                    Children.RemoveAt(0);
-            //*******************************************
-            */
         }
 
         public void SelectedItemChanged()
@@ -111,18 +99,6 @@ namespace CarouselView.Controls.Indicator.Dots
 
             if (selectedIndex > -1)
                 SelectDot(pagerIndicators[selectedIndex]);
-        }
-
-        private void CreateDot(int index)
-        {
-            //Make one button and add it to the dotLayout
-            var dot = new T_Tab();
-            dot.index = index;
-            dot.DotColor = DotColor;
-            dot.DotSize = DotSize;
-            dot.Initialize(null);
-
-            Children.Add(dot);
         }
 
         private static void UnselectDot(IDot dot)

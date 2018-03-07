@@ -20,12 +20,6 @@ namespace CarouselView.Controls
         private BaseIndicatorConfig _baseTabPosition;
         private CarouselLayout.CarouselLayout _carouselLayout;
 
-        public CustomTabbedView()
-        {
-            HorizontalOptions = LayoutOptions.FillAndExpand;
-            VerticalOptions = LayoutOptions.FillAndExpand;
-        }
-
         public CarouselLayout.CarouselLayout CasualLayout
         {
             get => _carouselLayout;
@@ -54,6 +48,19 @@ namespace CarouselView.Controls
                 _baseTabPosition = value;
                 InitialView();
             }
+        }
+
+        public CustomTabbedView()
+        {
+            HorizontalOptions = LayoutOptions.FillAndExpand;
+            VerticalOptions = LayoutOptions.FillAndExpand;
+
+            InitialComponent();
+        }
+
+        protected virtual void InitialComponent()
+        {
+
         }
 
         protected virtual void InitialView()
