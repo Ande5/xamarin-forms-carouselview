@@ -15,10 +15,10 @@ namespace CarouselView.Controls
     /// </summary>
     public class CustomTabbedView : RelativeLayout
     {
-        private BaseIndicator _baseIndicator;
+        private Iindicator _baseIndicator;
 
         private BaseIndicatorConfig _baseTabPosition;
-        private CarouselLayout.CarouselLayout _CarouselLayout;
+        private CarouselLayout.CarouselLayout _carouselLayout;
 
         public CustomTabbedView()
         {
@@ -28,15 +28,15 @@ namespace CarouselView.Controls
 
         public CarouselLayout.CarouselLayout CasualLayout
         {
-            get => _CarouselLayout;
+            get => _carouselLayout;
             set
             {
-                _CarouselLayout = value;
+                _carouselLayout = value;
                 InitialView();
             }
         }
 
-        public BaseIndicator Indicator
+        public Iindicator Indicator
         {
             get => _baseIndicator;
             set

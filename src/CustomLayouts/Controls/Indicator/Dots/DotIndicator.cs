@@ -10,7 +10,7 @@ namespace CarouselView.Controls.Indicator.Dots
     /// <summary>
     ///     dot style indicator
     /// </summary>
-    public class DotIndicator : StackLayout, BaseIndicator
+    public class DotIndicator : StackLayout, Iindicator
     {
         public static BindableProperty ItemsSourceProperty =
             BindableProperty.Create(

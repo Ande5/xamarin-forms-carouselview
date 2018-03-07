@@ -2,7 +2,7 @@
 
 namespace CarouselView.Controls.Indicator.Tabs
 {
-    internal class TabIndicatorConfig : BaseIndicatorConfig
+    public class TabIndicatorConfig : BaseIndicatorConfig
     {
         public override void InitializePosiotion(RelativeLayout layout, View casualLayout, View indicator)
         {
