@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CarouselView.Controls.Indicator.Interface;
 using CarouselView.Controls.Interface;
 using Xamarin.Forms;
 
@@ -9,7 +10,7 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// <summary>
     ///     Tab
     /// </summary>
-    public class Tab : StackLayout
+    public class Tab : StackLayout , IindicatorComponent
     {
         public Tab(ITabProvider provider)
         {
@@ -44,14 +45,14 @@ namespace CarouselView.Controls.Indicator.Tabs
 
         public BoxView BottomView { get; }
 
-        public virtual void SelectTab()
+        public virtual void Selected()
         {
             //tab.Opacity = 1.0;
             TextLabel.TextColor = Color.FromHex("#954DB3");
             BottomView.BackgroundColor = Color.FromHex("#954DB3");
         }
 
-        public virtual void UnselectTab()
+        public virtual void UnSelected()
         {
             // tab.Opacity = 0.5;
             TextLabel.TextColor = Color.FromHex("#000000");

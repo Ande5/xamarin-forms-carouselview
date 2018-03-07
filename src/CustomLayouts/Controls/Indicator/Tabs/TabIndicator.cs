@@ -148,12 +148,12 @@ namespace CarouselView.Controls.Indicator.Tabs
 
         private static void UnselectTab(Tab tab)
         {
-            tab.UnselectTab();
+            tab.UnSelected();
         }
 
         private static void SelectTab(Tab tab)
         {
-            tab.SelectTab();
+            tab.Selected();
         }
     }
 }
