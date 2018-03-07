@@ -10,7 +10,7 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// <summary>
     ///     tab style indicator
     /// </summary>
-    public class TabIndicator<T_Tab> : TabIndicatorScrollView, Iindicator where T_Tab : Xamarin.Forms.View , IindicatorComponent , new()
+    public class TabIndicator<T_Tab> : TabIndicatorScrollView, Iindicator where T_Tab : Xamarin.Forms.View , ITab, new()
     {
         public static BindableProperty ItemsSourceProperty =
             BindableProperty.Create(

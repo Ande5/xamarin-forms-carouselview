@@ -7,7 +7,7 @@ namespace CarouselView.Controls
     {
         public DotTabbedView()
         {
-            Indicator = new DotIndicator {DotSize = 5, DotColor = Color.Black};
+            Indicator = new DotIndicator<Dot> {DotSize = 5, DotColor = Color.Black};
             CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new DotIndicatorConfig();
         }
@@ -16,10 +16,10 @@ namespace CarouselView.Controls
         {
             base.InitialIndicator();
 
-            if (Indicator is DotIndicator bindableDotIndicator)
+            if (Indicator is DotIndicator<Dot> bindableDotIndicator)
             {
-                bindableDotIndicator.SetBinding(DotIndicator.ItemsSourceProperty, "Pages");
-                bindableDotIndicator.SetBinding(DotIndicator.SelectedItemProperty, "CurrentPage");
+                bindableDotIndicator.SetBinding(DotIndicator<Dot>.ItemsSourceProperty, "Pages");
+                bindableDotIndicator.SetBinding(DotIndicator<Dot>.SelectedItemProperty, "CurrentPage");
             }
         }
     }

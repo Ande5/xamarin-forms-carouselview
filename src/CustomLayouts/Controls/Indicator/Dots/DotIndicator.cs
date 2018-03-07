@@ -10,30 +10,30 @@ namespace CarouselView.Controls.Indicator.Dots
     /// <summary>
     ///     dot style indicator
     /// </summary>
-    public class DotIndicator : StackLayout, Iindicator
+    public class DotIndicator<T_Tab> : StackLayout, Iindicator where T_Tab : Xamarin.Forms.View, IDot, new()
     {
         public static BindableProperty ItemsSourceProperty =
             BindableProperty.Create(
                 nameof(ItemsSource),
                 typeof(IList),
-                typeof(DotIndicator),
+                typeof(DotIndicator<T_Tab>),
                 null,
                 BindingMode.OneWay,
                 propertyChanging: (bindable, oldValue, newValue) =>
                 {
-                    ((DotIndicator) bindable).ItemsSourceChanging();
+                    ((DotIndicator<T_Tab>) bindable).ItemsSourceChanging();
                 },
-                propertyChanged: (bindable, oldValue, newValue) => { ((DotIndicator) bindable).ItemsSourceChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) => { ((DotIndicator<T_Tab>) bindable).ItemsSourceChanged(); }
             );
 
         public static BindableProperty SelectedItemProperty =
             BindableProperty.Create(
                 nameof(SelectedItem),
                 typeof(object),
-                typeof(DotIndicator),
+                typeof(DotIndicator<T_Tab>),
                 null,
                 BindingMode.TwoWay,
-                propertyChanged: (bindable, oldValue, newValue) => { ((DotIndicator) bindable).SelectedItemChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) => { ((DotIndicator<T_Tab>) bindable).SelectedItemChanged(); }
             );
 
         public DotIndicator()
@@ -53,15 +53,14 @@ namespace CarouselView.Controls.Indicator.Dots
         {
             foreach (var item in ItemsSource)
             {
+                int index = Children.Count;
                 var tab = item as ITabProvider;
-                var image = new Image
-                {
-                    HeightRequest = 42,
-                    WidthRequest = 42,
-                    BackgroundColor = DotColor,
-                    Source = tab.ImageSource
-                };
-                Children.Add(image);
+                var dot = new T_Tab();
+                dot.index = index;
+                dot.DotColor = DotColor;
+                dot.DotSize = DotSize;
+                dot.Initialize(tab);
+                Children.Add(dot);
             }
         }
 
@@ -87,22 +86,25 @@ namespace CarouselView.Controls.Indicator.Dots
         {
             if (ItemsSource == null) return;
 
+            CreateTabs();
+            /*
             // Dots *************************************
             var countDelta = ItemsSource.Count - Children.Count;
 
             if (countDelta > 0)
                 for (var i = 0; i < countDelta; i++)
-                    CreateDot();
+                    CreateDot(i);
             else if (countDelta < 0)
                 for (var i = 0; i < -countDelta; i++)
                     Children.RemoveAt(0);
             //*******************************************
+            */
         }
 
         public void SelectedItemChanged()
         {
             var selectedIndex = ItemsSource.IndexOf(SelectedItem);
-            var pagerIndicators = Children.Cast<Button>().ToList();
+            var pagerIndicators = Children.Cast<IDot>().ToList();
 
             foreach (var pi in pagerIndicators)
                 UnselectDot(pi);
@@ -111,27 +113,26 @@ namespace CarouselView.Controls.Indicator.Dots
                 SelectDot(pagerIndicators[selectedIndex]);
         }
 
-        private void CreateDot()
+        private void CreateDot(int index)
         {
             //Make one button and add it to the dotLayout
-            var dot = new Button
-            {
-                BorderRadius = Convert.ToInt32(DotSize / 2),
-                HeightRequest = DotSize,
-                WidthRequest = DotSize,
-                BackgroundColor = DotColor
-            };
+            var dot = new T_Tab();
+            dot.index = index;
+            dot.DotColor = DotColor;
+            dot.DotSize = DotSize;
+            dot.Initialize(null);
+
             Children.Add(dot);
         }
 
-        private static void UnselectDot(Button dot)
+        private static void UnselectDot(IDot dot)
         {
-            dot.Opacity = 0.5;
+            dot.UnSelected();
         }
 
-        private static void SelectDot(Button dot)
+        private static void SelectDot(IDot dot)
         {
-            dot.Opacity = 1.0;
+            dot.Selected();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// <summary>
     ///     Tab
     /// </summary>
-    public class Tab : StackLayout , IindicatorComponent
+    public class Tab : StackLayout , ITab
     {
         /// <summary>
         /// Index
