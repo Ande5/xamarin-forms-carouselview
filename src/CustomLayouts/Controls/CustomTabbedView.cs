@@ -56,35 +56,31 @@ namespace CarouselView.Controls
             }
         }
 
-        private void InitialView()
+        protected virtual void InitialView()
         {
             if (CasualLayout != null && Indicator != null && Generator != null)
                 try
                 {
+                    //initial page
                     CasualLayout.SetBinding(CarouselLayout.CarouselLayout.ItemsSourceProperty, "Pages");
                     CasualLayout.SetBinding(CarouselLayout.CarouselLayout.SelectedItemProperty, "CurrentPage",
                         BindingMode.TwoWay);
 
-                    //目前先暫時這樣包裝
-                    if (Indicator is TabIndicator bindableIndicator)
-                    {
-                        bindableIndicator.SetBinding(TabIndicator.ItemsSourceProperty, "Pages");
-                        bindableIndicator.SetBinding(TabIndicator.SelectedItemProperty, "CurrentPage");
-                        //bindableIndicator.SetBinding(CustomLayouts.Indicator.ItemsSourceProperty, "Pages");
-                        //bindableIndicator.SetBinding(CustomLayouts.Indicator.SelectedItemProperty, "CurrentPage");
-                    }
-                    else if (Indicator is DotIndicator bindableDotIndicator)
-                    {
-                        bindableDotIndicator.SetBinding(DotIndicator.ItemsSourceProperty, "Pages");
-                        bindableDotIndicator.SetBinding(DotIndicator.SelectedItemProperty, "CurrentPage");
-                    }
+                    //initial indicator
+                    InitialIndicator();
 
                     //generate position
                     Generator.InitializePosiotion(this, CasualLayout, Indicator as View);
                 }
                 catch (Exception ex)
                 {
+
                 }
+        }
+
+        protected virtual void InitialIndicator()
+        {
+
         }
     }
 }

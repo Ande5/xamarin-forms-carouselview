@@ -11,5 +11,16 @@ namespace CarouselView.Controls
             CasualLayout = new CarouselLayout.CarouselLayout();
             Generator = new DotIndicatorConfig();
         }
+
+        protected override void InitialIndicator()
+        {
+            base.InitialIndicator();
+
+            if (Indicator is DotIndicator bindableDotIndicator)
+            {
+                bindableDotIndicator.SetBinding(DotIndicator.ItemsSourceProperty, "Pages");
+                bindableDotIndicator.SetBinding(DotIndicator.SelectedItemProperty, "CurrentPage");
+            }
+        }
     }
 }

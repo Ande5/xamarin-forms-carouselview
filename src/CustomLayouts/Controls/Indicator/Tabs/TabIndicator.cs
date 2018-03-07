@@ -10,30 +10,30 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// <summary>
     ///     tab style indicator
     /// </summary>
-    public class TabIndicator : ScrollView, Iindicator
+    public class TabIndicator<T_Tab> : TabIndicatorScrollView, Iindicator where T_Tab : Xamarin.Forms.View , IindicatorComponent , new()
     {
         public static BindableProperty ItemsSourceProperty =
             BindableProperty.Create(
                 nameof(ItemsSource),
                 typeof(IList),
-                typeof(TabIndicator),
+                typeof(TabIndicator<T_Tab>),
                 null,
                 BindingMode.OneWay,
                 propertyChanging: (bindable, oldValue, newValue) =>
                 {
-                    ((TabIndicator) bindable).ItemsSourceChanging();
+                    ((TabIndicator<T_Tab>) bindable).ItemsSourceChanging();
                 },
-                propertyChanged: (bindable, oldValue, newValue) => { ((TabIndicator) bindable).ItemsSourceChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) => { ((TabIndicator<T_Tab>) bindable).ItemsSourceChanged(); }
             );
 
         public static BindableProperty SelectedItemProperty =
             BindableProperty.Create(
                 nameof(SelectedItem),
                 typeof(object),
-                typeof(TabIndicator),
+                typeof(TabIndicator<T_Tab>),
                 null,
                 BindingMode.TwoWay,
-                propertyChanged: (bindable, oldValue, newValue) => { ((TabIndicator) bindable).SelectedItemChanged(); }
+                propertyChanged: (bindable, oldValue, newValue) => { ((TabIndicator<T_Tab>) bindable).SelectedItemChanged(); }
             );
 
         public TabIndicator()
@@ -83,7 +83,11 @@ namespace CarouselView.Controls.Indicator.Tabs
             foreach (var item in ItemsSource)
             {
                 var index = GridContainer.Children.Count;
-                var tab = new Tab(item as ITabProvider);
+
+                //Create new tab
+                var tab = new T_Tab();
+                tab.index = index;
+                tab.Initialize(item as ITabProvider);
 
                 var tgr = new TapGestureRecognizer();
                 tgr.Command = new Command(() => { SelectedItem = ItemsSource[index]; });
@@ -127,7 +131,7 @@ namespace CarouselView.Controls.Indicator.Tabs
         public async void SelectedItemChanged()
         {
             var selectedIndex = ItemsSource.IndexOf(SelectedItem);
-            var pagerIndicators = GridContainer.Children.Cast<Tab>().ToList();
+            var pagerIndicators = GridContainer.Children.Cast<T_Tab>().ToList();
 
             foreach (var pi in pagerIndicators)
                 UnselectTab(pi);
@@ -146,14 +150,22 @@ namespace CarouselView.Controls.Indicator.Tabs
             await ScrollToAsync(targetPoition, 0, true);
         }
 
-        private static void UnselectTab(Tab tab)
+        private static void UnselectTab(T_Tab tab)
         {
             tab.UnSelected();
         }
 
-        private static void SelectTab(Tab tab)
+        private static void SelectTab(T_Tab tab)
         {
             tab.Selected();
         }
+    }
+
+    /// <summary>
+    /// this class is just use for android renderer
+    /// <see cref="CarouselView.Platforms.Android.TabIndicatorRenderer"/>
+    /// </summary>
+    public class TabIndicatorScrollView : ScrollView
+    {
     }
 }

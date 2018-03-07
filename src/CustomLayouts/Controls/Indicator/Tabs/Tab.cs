@@ -12,7 +12,16 @@ namespace CarouselView.Controls.Indicator.Tabs
     /// </summary>
     public class Tab : StackLayout , IindicatorComponent
     {
-        public Tab(ITabProvider provider)
+        /// <summary>
+        /// Index
+        /// </summary>
+        public int index { get; set; }
+
+        protected Label TextLabel { get; set; }
+
+        protected BoxView BottomView { get; set; }
+
+        public virtual void Initialize(ITabProvider provider)
         {
             Orientation = StackOrientation.Vertical;
             HorizontalOptions = LayoutOptions.Center;
@@ -20,7 +29,6 @@ namespace CarouselView.Controls.Indicator.Tabs
             WidthRequest = 94;
             HeightRequest = 44;
             Spacing = 0;
-
 
             Children.Add(TextLabel = new Label
             {
@@ -41,10 +49,6 @@ namespace CarouselView.Controls.Indicator.Tabs
             });
         }
 
-        public Label TextLabel { get; }
-
-        public BoxView BottomView { get; }
-
         public virtual void Selected()
         {
             //tab.Opacity = 1.0;
@@ -58,5 +62,7 @@ namespace CarouselView.Controls.Indicator.Tabs
             TextLabel.TextColor = Color.FromHex("#000000");
             BottomView.BackgroundColor = Color.FromHex("#FFFFFF");
         }
+
+        
     }
 }

@@ -10,7 +10,7 @@ using CarouselView.Platforms.Android;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(TabIndicator), typeof(TabIndicatorRenderer))]
+[assembly: ExportRenderer(typeof(TabIndicatorScrollView), typeof(TabIndicatorRenderer))]
 
 namespace CarouselView.Platforms.Android
 {
