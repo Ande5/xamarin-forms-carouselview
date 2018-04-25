@@ -39,13 +39,12 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid80' ">
     <Compile Include="Platforms\Shared\**\*.cs" />
     <Compile Include="Platforms\Android\**\*.cs" />
-    <PackageReference Include="NETStandard.Library" Version="2.0.1" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.0" />
     <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.Design" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v4" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" version="25.4.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.Vector.Drawable" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Forms" version="2.5.0.122203" />
@@ -55,11 +54,11 @@
     <Compile Include="Platforms\Shared\**\*.cs" />
     <Compile Include="Platforms\iOS\**\*.cs" />
     <Reference Include="OpenTK-1.0" />
-    <PackageReference Include="NETStandard.Library" Version="2.0.1" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="NETStandard.Library" Version="2.0.1" />
+    <PackageReference Update="NETStandard.Library" Version="2.0.0" />
   </ItemGroup>
 
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
