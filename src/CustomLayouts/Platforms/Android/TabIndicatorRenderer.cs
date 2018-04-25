@@ -39,10 +39,10 @@ namespace CarouselView.Platforms.Android
             if (e.PropertyName == "Renderer")
             {
                 _scrollView = (HorizontalScrollView) typeof(ScrollViewRenderer)
-                    .GetField("_hScrollView", BindingFlags.NonPublic | BindingFlags.Instance)
-                    .GetValue(this);
+                    .GetField("_hScrollView", bindingAttr: BindingFlags.NonPublic | BindingFlags.Instance)
+                    ?.GetValue(this);
 
-                _scrollView.HorizontalScrollBarEnabled = false;
+                if (_scrollView != null) _scrollView.HorizontalScrollBarEnabled = false;
 
                 if (Element != null && Element is IScrollViewController controller)
                     controller.ScrollToRequested += OnScrollToRequested;
