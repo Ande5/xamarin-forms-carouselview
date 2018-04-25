@@ -9,7 +9,7 @@
     <Description>A casual view that has several common type. Supports Android and iOS</Description>
     <PackageLicenseUrl>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageLicenseUrl>
     <PackageTags>windows ios casualView</PackageTags>
-    <PackageVersion>7.0.1</PackageVersion>
+    <PackageVersion>7.0.2</PackageVersion>
     <PackageReleaseNotes>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageReleaseNotes>
     <PackageIconUrl></PackageIconUrl>
   </PropertyGroup>
@@ -40,14 +40,14 @@
     <Compile Include="Platforms\Shared\**\*.cs" />
     <Compile Include="Platforms\Android\**\*.cs" />
     <PackageReference Include="NETStandard.Library" Version="2.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.Design" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v4" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" version="26.1.0.1" />
-    <PackageReference Include="Xamarin.Android.Support.Vector.Drawable" version="26.1.0.1" />
+    <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.Design" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v4" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.Vector.Drawable" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Forms" version="2.5.0.122203" />
   </ItemGroup>
 
