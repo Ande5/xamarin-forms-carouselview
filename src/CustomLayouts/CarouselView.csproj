@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;MonoAndroid80;Xamarin.iOS10;</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -9,37 +8,33 @@
     <Description>A casual view that has several common type. Supports Android and iOS</Description>
     <PackageLicenseUrl>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageLicenseUrl>
     <PackageTags>windows ios casualView</PackageTags>
-    <PackageVersion>7.0.2</PackageVersion>
+    <PackageVersion>7.0.3</PackageVersion>
     <PackageReleaseNotes>https://github.com/andy840119-Xamarin/xamarin-forms-carouselview/blob/master/README.md</PackageReleaseNotes>
-    <PackageIconUrl></PackageIconUrl>
+    <PackageIconUrl>
+    </PackageIconUrl>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <DefineConstants>$(DefineConstants);NETSTANDARD;BAIT</DefineConstants>
     <Product>CarouselView - .NET Standard 2</Product>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
     <DefineConstants>$(DefineConstants);__IOS__</DefineConstants>
     <Product>CarouselView - iOS</Product>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Platforms\**\*.cs" />
     <None Include="Platforms\**\*.cs" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" PrivateAssets="all" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.*" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <Compile Include="Platforms\Shared\**\*.cs" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid80' ">
     <Compile Include="Platforms\Shared\**\*.cs" />
     <Compile Include="Platforms\Android\**\*.cs" />
-    <PackageReference Include="NETStandard.Library" Version="2.0.0" />
     <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.Design" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v4" version="25.4.0.2" />
@@ -49,17 +44,10 @@
     <PackageReference Include="Xamarin.Android.Support.Vector.Drawable" version="25.4.0.2" />
     <PackageReference Include="Xamarin.Forms" version="2.5.0.122203" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
     <Compile Include="Platforms\Shared\**\*.cs" />
     <Compile Include="Platforms\iOS\**\*.cs" />
     <Reference Include="OpenTK-1.0" />
-    <PackageReference Include="NETStandard.Library" Version="2.0.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="NETStandard.Library" Version="2.0.0" />
-  </ItemGroup>
-
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>
