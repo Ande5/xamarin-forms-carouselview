@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\neko\.Rider2018.1\System\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_CustomLayouts.-1840026781.00" t="ExcludeRecursive" />
+    <e p="D:\Github\andy840119-xamarin\xamarin-forms-carouselview\src" t="IncludeFlat">
+      <e p="CustomLayouts" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CarouselView.csproj" t="IncludeRecursive" />
+        <e p="Controls" t="Include">
+          <e p="CarouselLayout" t="Include">
+            <e p="CarouselLayout.cs" t="Include" />
+          </e>
+          <e p="CustomTabbedView.cs" t="Include" />
+          <e p="DotTabbedView.cs" t="Include" />
+          <e p="Indicator" t="Include">
+            <e p="BaseIndicatorConfig.cs" t="Include" />
+            <e p="Dots" t="Include">
+              <e p="Dot.cs" t="Include" />
+              <e p="DotIndicator.cs" t="Include" />
+              <e p="DotIndicatorConfig.cs" t="Include" />
+              <e p="IDot.cs" t="Include" />
+            </e>
+            <e p="Interface" t="Include">
+              <e p="Iindicator.cs" t="Include" />
+              <e p="IindicatorComponent.cs" t="Include" />
+            </e>
+            <e p="Tabs" t="Include">
+              <e p="ITab.cs" t="Include" />
+              <e p="Tab.cs" t="Include" />
+              <e p="TabIndicator.cs" t="Include" />
+              <e p="TabIndicatorConfig.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Interface" t="Include">
+            <e p="IPageProvider.cs" t="Include" />
+            <e p="ITabProvider.cs" t="Include" />
+          </e>
+          <e p="TabTabbedView.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="MonoAndroid80" t="Include">
+              <e p="Resource.designer.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Platforms" t="Include">
+          <e p="Android" t="Include">
+            <e p="AndroidCarouselLayoutRenderer.cs" t="Include" />
+            <e p="TabIndicatorRenderer.cs" t="Include" />
+          </e>
+          <e p="iOS" t="Include">
+            <e p="IosCarouselLayoutRenderer.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="CustomLayouts.sln" t="IncludeFlat" />
+      <e p="CustomLayoutsDemo" t="IncludeRecursive">
+        <e p="App.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CustomLayouts.projitems" t="Include" />
+        <e p="CustomLayoutsDemo.csproj" t="IncludeRecursive" />
+        <e p="HomePage.cs" t="Include" />
+        <e p="HomeView.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="SwitcherPage.cs" t="Include" />
+        <e p="ViewModels" t="Include">
+          <e p="BaseViewModel.cs" t="Include" />
+          <e p="SwitcherPageViewModel.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Droid" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="AboutAssets.txt" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CustomLayouts.Droid.csproj" t="IncludeRecursive" />
+        <e p="MainActivity.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AndroidManifest.xml" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="AboutResources.txt" t="Include" />
+          <e p="drawable" t="Include">
+            <e p="icon.png" t="Include" />
+            <e p="pin.png" t="Include" />
+          </e>
+          <e p="drawable-hdpi" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="drawable-xhdpi" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="drawable-xxhdpi" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="layout" t="Include" />
+          <e p="Resource.designer.cs" t="Include" />
+          <e p="values" t="Include" />
+        </e>
+      </e>
+      <e p="iOS" t="IncludeRecursive">
+        <e p="AppDelegate.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CustomLayouts.iOS.csproj" t="IncludeRecursive" />
+        <e p="Entitlements.plist" t="Include" />
+        <e p="Info.plist" t="Include" />
+        <e p="ITunesArtwork" t="Include" />
+        <e p="ITunesArtwork@2x" t="Include" />
+        <e p="Main.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="Default-568h@2x.png" t="Include" />
+          <e p="Default-Portrait.png" t="Include" />
+          <e p="Default-Portrait@2x.png" t="Include" />
+          <e p="Default.png" t="Include" />
+          <e p="Default@2x.png" t="Include" />
+          <e p="Icon-60@2x.png" t="Include" />
+          <e p="Icon-60@3x.png" t="Include" />
+          <e p="Icon-76.png" t="Include" />
+          <e p="Icon-76@2x.png" t="Include" />
+          <e p="Icon-Small-40.png" t="Include" />
+          <e p="Icon-Small-40@2x.png" t="Include" />
+          <e p="Icon-Small-40@3x.png" t="Include" />
+          <e p="Icon-Small.png" t="Include" />
+          <e p="Icon-Small@2x.png" t="Include" />
+          <e p="Icon-Small@3x.png" t="Include" />
+          <e p="LaunchScreen.storyboard" t="Include" />
+          <e p="pin.png" t="Include" />
+          <e p="pin@2x.png" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive">
+        <e p="Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.Core.UI.25.4.0.2\proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.Design.25.4.0.2\proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+      </e>
+      <e p="src" t="Include" />
+    </e>
+  </component>
+</project>
