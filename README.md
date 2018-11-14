@@ -1,5 +1,8 @@
 # Xamarin.Forms CarouselView
 
+[![NuGet](https://img.shields.io/nuget/v/CarouselView.svg)](https://www.nuget.org/packages/CarouselView)
+[![NuGet](https://img.shields.io/nuget/dt/CarouselView.svg)](https://www.nuget.org/packages/CarouselView)
+
 _A version of this recipe that uses the **Xamarin.Forms.CarouselView** [from NuGet](https://www.nuget.org/packages/CarouselView/)._
 
 ---
